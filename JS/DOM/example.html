@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Array</title>
+
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <iframe src="DOM_Document.html" style="width: 500px; height: 500px;" frameborder="2"></iframe>
+        <button onclick="importNode()" >Click</button>
+        <script type="text/javascript" language="javascript">
+            // 
+            // Chrome da localde çalışıyor mu kontrolü yapıldığı için bu kod çalışmaz
+            // firefox üzerinden deneyebilirsin
+            // çalışmadı
+            function importNode()
+            {
+                var frame = document.getElementsByTagName("IFRAME")[0];
+                var area = frame.contentWindow.document.getElementsByTagName("P")[0];
+                var result = document.importNode(area, true);
+                document.body.appendChild(result);
+            }
+        </script>
+    </body>
+</html>

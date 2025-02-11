@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>DERS4</title>
+    
+    </head>
+    <body>
+        <h3>what to do when if the client browser is not supporting JavaScript?</h3>
+        <p>1. You can use the  tag to display a message to the user that JavaScript is not supported.</p>
+        <noscript>
+            <p>JavaScript is not supported by your browser!</p>
+        </noscript>
+        <p>if it is supported noscript tag will not appear.</p>
+
+
+        
+        <script type="text/javascript" language="javascript">
+            // inline comment line
+            /*
+                multi line comment
+                multi line comment
+                multi line comment
+            */
+            { // code block 1
+                {   // inner code block 2
+                    document.write("Hello World!");
+                }   // inner code block 2 end
+            } // code block 1 end
+    
+            // white spaces 
+            var name    =   "John";
+            var surname =   "Doe";
+            var age     =   30;
+            var job     =   "Software Developer";
+    
+            alert("Name: " + name + "\nSurname: " + surname + "\nAge: " + age + "\nJob: " + job);
+            // first alert will be displayed
+            // then document will be written
+        </script>
+
+        <script type="text/javascript" language="javascript">
+            // alert()          // alert() function is used to display an alert box with a message and an OK button.
+            // window.alert()   // window.alert() function is used to display an alert box with a message and an OK button. (object oriented, BOM)
+            // alert() and window.alert() are the same.
+
+            // confirm()        // confirm() function is used to display a dialog box with a specified message, along with an OK and a Cancel button.
+            // prompt()         // prompt() function is used to display a dialog box that prompts the visitor for input.
+
+            // alert("Hello World!");
+            // window.alert("Hello World!");
+            // confirm("Are you sure?");
+            // prompt("Please enter your name: ", "John Doe");
+        </script>
+
+        <script type="text/javascript" language="javascript">
+            // document.write()     // document.write() function is used to write content directly to the HTML document. (object oriented, DOM)
+            // document.writeln()   // document.writeln() function is used to write content directly to the HTML document. (object oriented, DOM)
+            // writeln() is the same as write() but it adds a newline character at the end of each line.
+            
+            document.write("Hello World!");
+            document.writeln("Hello World!");
+            document.write("Hello World!");
+            // whit this example, nothing is changed
+            // all Hello World will be displayed in the same line
+        </script>
+        <pre>
+        <script type="text/javascript" language="javascript">
+            // but when you use <pre> tag, it will be displayed properly
+            // because <pre> tag is used to define preformatted text.
+            // becuase of writeln() third Hello World will be displayed in the next line
+            
+            document.write("Hello World!");
+            document.writeln("Hello World!");
+            document.write("Hello World!");
+        </script>
+        </pre>
+
+        <script type="text/javascript" language="javascript">
+            // It declares a value to browser console's 
+            // also you can use console.log() function to display a message in the console like debugging
+            
+            console.log("Hello World!");
+        </script>
+
+        <p id="demo"></p>
+
+        <script type="text/javascript" language="javascript">
+            // innerHTML property is used to get or change the HTML content of an element.
+
+            document.getElementById("demo").innerHTML = "It is written with innerHTML!";
+        </script>
+
+
+        <script type="text/javascript" language="javascript">
+            document.write("Turkey");
+            debugger;
+            document.write("Mongolia");
+            document.write("Kazakhstan");
+            document.write("Kırgızistan");
+            document.write("Ozbekistan");
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Control Structures</title>
+    </head>
+    <body>
+        <script type="text/javascript" language="javascript">      
+            // functions
+            // function names starts with $, _ and letters
+            /*
+                function func_name(params)
+                {
+                
+                }
+            */   
+
+            // declaration function
+            document.write("<h2> function declaration </h2> <br />");
+            function Print(name)
+            {
+                document.write("Hello " + name + "!" + "<br />");
+            }
+            // function calling
+            Print("Rai"); 
+
+
+            // assigning function to a variable
+            // why we need this?    
+            document.write("<h2> assigning function to a variable </h2> <br />");
+            var Add = function(num1, num2)
+                        {
+                            var result = num1 + num2;
+                            document.write("Addition result is " + result + "<br />");
+                        }
+            Add(5,6);
+
+
+            document.write("<h2> using global variable in function locale scope </h2> <br />");
+            // using global variable in function locale scope
+            // global variable should be global for function.
+            // For example if a variable in a code block like loop block and function is outside of this loop block so function cant access loop's variable.
+            var variable1 = "Hello"
+            let variable2 = "World"
+            const variable3 = "!"
+            function CoderGreeting(){
+                document.write(variable1 + " " + variable2 + variable3 + "<br />");
+            }
+            CoderGreeting();
+
+            // but function local variables are not accesible from outside.
+
+
+            document.write("<h2> return keyword </h2> <br />");
+            // return keyword
+            // return returns given varible and fonksiyonu sonlandırıp çıkış yapar
+            var result2 = function(num1, num2){
+                result = num1 - num2;
+                return result;
+            }
+            document.write("function result is " + result2(7,9) + "<br />");
+
+            var _array = function(num1, num2){
+                return [num1, num2];
+            }
+            document.write("created array is " + _array("a",4) + "<br />");
+
+
+            document.write("<h2> function paramaters </h2> <br />");
+            // function parameters and default parameters
+            function CalculateNetSum(amount, taxValue = 20)
+            {   
+                var tax = (amount/100)*taxValue; 
+                netSum = amount + tax;
+                return netSum;
+            }
+            document.write("Default net sum is " + CalculateNetSum(50) + "<br />");
+            document.write("Net Sum with %63 tax is " + CalculateNetSum(50, 63) + "<br />");
+
+
+            document.write("<h2> IIFE, function running without calling </h2> <br />");
+            // function running without calling
+            // (function declaration)();
+            (
+                function Test()
+                {
+                    document.write("this one worked without tranditional function calling" + "<br />");
+                }
+            )();
+
+            var exp = (
+                        function ()
+                        {
+                            document.write("this one also worked same as above." + "<br />");
+                        }
+                    )();
+
+            
+
+            // parameter declaration for this type function, Anonim Fonksiyon (IIFE) ile Çağrı, Ancak, fonksiyonun adının burada bir işlevi olmadığını bilmelisiniz.
+            (   
+                function Test2(_var1, _var2)
+                {
+                    document.write("Parameters are " + _var1 + " and " + _var2 + "<br />");
+                }
+            )(6,"six");
+
+            // Atanmış IIFE
+            var exp2 = (
+                            function (_var1 , _var2)
+                            {
+                                document.write("For type2, parameters are " + _var1 + " and " + _var2 + "<br />");
+                            }
+                        )(9,"nine");
+
+
+            document.write("<h2> using function as a input for another function </h2> <br />");
+            // fonksiyondan başka bir fonksiyona değer döndürme
+            function TLExchange(dolar=false, euro= false, amount)
+            {
+                if (dolar==true & euro==false)
+                {
+                    return (amount* 34.56)
+
+                }
+                if (dolar==false & euro==true)
+                {
+                    return (amount* 36.53)
+                }
+            }
+            function CalculateNetAmount(amount, dolar=false, euro= false, taxValue=5)
+            {
+                tlValue = TLExchange(dolar, euro, amount);
+                var tax = (tlValue/100)*taxValue; 
+                netSum = amount + tax;
+                return netSum;
+            }
+            var netAmount = CalculateNetAmount(980, dolar=true);
+            document.write("Net amount in Turkish Lira is " + netAmount + "<br />");
+            
+
+            document.write("<h2> nested function </h2> <br />");
+            //nested functions
+            function AddingSquares(num1, num2)
+            {
+                function CalculateSquare(num)
+                {
+                    return num**2;
+                }
+                return CalculateSquare(num1) + CalculateSquare(num2);
+            }
+            var variable4 = 5;
+            var variable5 = 2;
+
+            document.write(variable4 + "2".sup() + " + " + variable5 + "2".sup() + " = " + AddingSquares(variable4, variable5) + "<br />")
+
+            // example 2
+            function OuterFunction(outerParam)
+            {
+                document.write("Outer param is " + outerParam + "<br />");
+
+                return function InnerFunction(innerParam)
+                {
+                    document.write("Inner param is " + innerParam + "<br />");
+                }
+
+                // return InnerFunction(); undefined dönüyor inner function
+            }
+            OuterFunction("hey")("Earth");
+
+            // example 3
+            function one(param1)
+            {
+                function two(param2)
+                {
+                    function three(param3)
+                    {
+                        return param1 + param2 + param3;
+                    }
+                    return three;
+                }
+                return two;
+            }
+            document.write("Nested adding function result is " + one(1)(2)(3) + "<br />");
+        
+            // example 4
+            function func1()
+            {
+                var value = 3;
+                function func2(value)
+                {
+                    document.write("Inner param is " + value + "<br />");
+                }
+                return func2;
+            }
+            func1(); // Inner yok
+            func1()(); // undefined
+            func1()(9); // 9    
+
+
+
+            document.write("<h2> recursive function </h2> <br />");
+            // Recursive Function
+            function Factorial(num)
+            {
+                if (num == 1) { return num; }
+
+                return num*Factorial(--num);
+            }            
+            var value6 = 5;
+            document.write("Factorial" + value6 + " is " + Factorial(value6) + "<br />");
+        
+            
+            document.write("<h2> getting paramaters with length </h2> <br />");
+            // length attribute
+            // It returns function parameter number
+            function example(param1, param2, param3, param4=5)
+            {
+                var paramCount = example.length;
+                document.write("Function example's param number is " + paramCount + "<br />");
+            }
+            example(1,2,3);
+            example(1,2,3,4);
+
+
+            document.write("<h2> argument attribute </h2> <br />");
+            // argument attribute
+            // It returns function attributes list even without determine paramater
+            function example2()
+            {
+                for (var i=0; i<arguments.length; i++)
+                {   
+                    document.write(arguments[i] + "<br />");
+                }
+                document.write("All params are " + arguments + "<br />");
+            }
+            example2(1,2,3);
+            document.write("<br />");
+            example2(1,2,3,4);
+
+
+            document.write("<h2> caller </h2> <br />");
+            // caller
+            // fonksiyonu çağıran diğer bir fonksiyon referans olarak alınarak tüm bilgilerinin alınması sağlar
+
+            function BaseFunction()
+            {
+                for (var i=0; i<BaseFunction.caller.arguments.length; i++)
+                {   
+                    document.write(CallerFunction.arguments[i] + "<br />");
+                    // document.write(BaseFunction.caller.arguments[i] + "<br />");
+                }
+            }
+
+            function CallerFunction(param1, param2)
+            {
+                BaseFunction()
+            }
+            CallerFunction("Rai ", "Shi")
+
+
+
+            document.write("<h2> function declaration in return </h2> <br />");
+            // return içinde fonksiyon tanımlama ve fonksiyon çağırma
+
+           var person = function() {
+            var name = "Rai";
+            var surname = "Shi";
+            var age = 24;
+            return {
+                getNameSurname: function() {
+                    return name + " " + surname;
+                },
+                setAge: function(newAge) {
+                    age = newAge; // Bu şekilde `age` güncellenir
+                    return age;
+                }
+            };
+        };
+
+        var result3 = person(); // `person` fonksiyonu çağrılır, bir nesne döner.
+        document.write(result3 + "<br />"); // "[object Object]" yazdırır çünkü `result3` bir nesnedir.
+
+        var result4 = result3.getNameSurname(); // Nesnenin `getNameSurname` metodunu çağırırsınız.
+        document.write(result4 + "<br />"); // "Rai Shi" yazdırır.
+
+        var result5 = result3.setAge(); // Parametresiz çağrılırsa `newAge` undefined olur.
+        document.write(result5 + "<br />"); // "undefined" yazdırır.
+
+        var result6 = result3.setAge(25); // `age` değeri 25 olarak güncellenir.
+        document.write(result6 + "<br />"); // "25" yazdırır.
+
+
+        
+        document.write("<h2> arrow function </h2> <br />");
+        // lambda yerine arrow function var
+        /*
+        (parametreler) => ifade
+
+        (parametreler) => {
+            // birden fazla işlem
+            return ifade;
+        }
+        */
+
+        /*
+        // Geleneksel fonksiyon tanımı
+        function multiplyByTwo(x) {
+            return x * 2;
+        }
+        */
+        // Lambda (arrow function) eşdeğeri
+        const multiplyByTwo = x => x * 2;
+        console.log(multiplyByTwo(4)); // 8
+
+        // with mutliple paramater
+        const add = (a, b) => a + b;
+        console.log(add(3, 5)); // 8  
+        
+        // as a block
+        const greet = name => {
+            const greeting = "Hello, " + name + "!";
+            return greeting;
+        };
+
+        console.log(greet("Rai")); // "Hello, Rai!"
+
+        [1, 2, 3].map(x => x * x); // [1, 4, 9]
+
+        /*
+        Lambda Fonksiyonları Nerede Kullanışlıdır?
+Callback Fonksiyonları:
+
+javascript
+Copy code
+setTimeout(() => console.log("Hello!"), 1000);
+Array Fonksiyonları:
+
+javascript
+Copy code
+const numbers = [1, 2, 3, 4];
+const squares = numbers.map(n => n * n);
+console.log(squares); // [1, 4, 9, 16]
+Event Dinleyicileri:
+
+javascript
+Copy code
+document.querySelector("button").addEventListener("click", () => {
+    console.log("Button clicked!");
+});
+Kısıtlamalar
+this, arguments, super ve new.target gibi özel sözcükler bağlanamaz. Yani, bir ok fonksiyonu, bir constructor (yapıcı) olarak kullanılamaz:
+
+javascript
+Copy code
+const MyClass = () => {};
+const obj = new MyClass(); // TypeError
+        */
+
+
+        </script>
+    </body>
+</html>

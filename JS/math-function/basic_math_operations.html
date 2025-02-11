@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>basic math functions</title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript" language="javascript">
+            value = 10;
+            value2 = 25;
+
+            document.write("<h4>addition</h4>");
+            // addition, sum operation
+            document.write(2+8);                                            // 10
+            document.write("<br />");
+
+            // atamalı toplama
+            document.write("value: " + value + ", value2: " + value2);      // 10, 25
+            value2 += value;
+
+            document.write("<br />" + "value2 += value" + "<br />");
+            document.write("value: " + value + ", value2: " + value2);      // 10, 35
+
+
+            document.write("<h4>substruction</h4>");   
+            // substruction 
+            document.write(2-8);                                            // -6
+            document.write("<br />");
+
+            // atamalı çıkarma
+            document.write("value: " + value + ", value2: " + value2);      // 10, 35
+            value2 -= value;
+
+            document.write("<br />" + "value2 -= value" + "<br />");
+            document.write("value: " + value + ", value2: " + value2);      // 10, 25
+
+
+            document.write("<h4>multiplication</h4>");   
+            // multiplication 
+            document.write(2*8);                                            // 16
+            document.write("<br />");
+
+            // atamalı çarpma
+            document.write("value: " + value + ", value2: " + value2);      // 10, 25
+            value2 *= value;
+
+            document.write("<br />" + "value2 *= value" + "<br />");
+            document.write("value: " + value + ", value2: " + value2);      // 10, 250
+
+
+            document.write("<h4>division</h4>");   
+            // division 
+            document.write(2/8);                                            // 0.25
+            document.write("<br />");
+
+            // atamalı bölme
+            document.write("value: " + value + ", value2: " + value2);      // 10, 250
+            value2 /= value;
+
+            document.write("<br />" + "value2 /= value" + "<br />");
+            document.write("value: " + value + ", value2: " + value2);      // 10, 25
+
+
+            document.write("<h4>modulus</h4>");   
+            // modulus 
+            document.write(96%5);                                           // 1
+            document.write("<br />");
+
+            // atamalı mod alma
+            document.write("value: " + value + ", value2: " + value2);      // 10, 25
+            value2 %= value;
+
+            document.write("<br />" + "value2 %= value" + "<br />");
+            document.write("value: " + value + ", value2: " + value2);      // 10, 5
+
+
+            document.write("<h4>power</h4>");   
+            // power 
+            document.write(2**5);                                           // 32
+            document.write("<br />");
+
+            // atamalı üs alma
+            document.write("value: " + value + ", value2: " + value2);      // 10, 5
+            value2 **= value;
+
+            document.write("<br />" + "value2 **= value" + "<br />");
+            document.write("value: " + value + ", value2: " + value2);      // 9765625
+
+
+            value3 = 0
+
+            // arttırma
+            // ++variable : increase then use
+            // variable++ : use then increase
+            document.write("<h4>increment</h4>"); 
+            
+            document.write(value3 + "<br />");                              // 0 
+            document.write("++value3" + "<br />");
+            document.write(++value3 + "<br />");                            // 1
+
+
+            // azaltma
+            // --variable : decrease then use
+            // variable-- : use then decrease
+            document.write("<h4>decrement</h4>"); 
+
+            document.write(value3 + "<br />");                              // 1
+            document.write("--value3" + "<br />");
+            document.write(--value3 + "<br />");                            // 0
+            document.write(--value3 + "<br />");                            // -1
+        </script>
+    </body>
+</html>

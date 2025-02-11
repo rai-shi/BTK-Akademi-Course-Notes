@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>VARIABLES</title>
+    </head>
+    <body>
+        <script type="text/javascript" language="javascript">
+            // var : Standart variable declaration.
+            // let : Block scope variable declaration, decalred variable can be used only in the block, local where it is declared.
+            // const : Block scope constant declaration.
+            // var, let and const are case sensitive. 
+
+            // they are different about their structure. But same about their usage.
+            // variable names can be started with letters, $ or _
+
+            let $exp1 = "Hello World!";
+            const _exp2 = "Hello World!";
+            var name = "Rai Shi";
+            document.write(name + "<br />");
+            document.write($exp1 + "<br />");
+            document.write(_exp2 + "<br />");
+
+
+            // var example
+            document.write("<h2> var example : </h2><br />");
+            var name = "Felix";
+            document.write("name value before scope: "+ name + "<br />");
+            if (true) {
+                var name = "Rai Shi";
+                document.write("name value in scope: "+ name + "<br />");
+            }
+            document.write("name value after scope: "+ name + "<br />");
+
+            var name = "Dante";
+            document.write("name value after redeclaration: "+ name + "<br />");
+            // can be re-declared and value can be changed.
+            name = "Louis";
+            document.write("name value after changing value: "+ name + "<br />");
+
+
+            // let example
+            document.write("<h2> let example : </h2><br />");
+            let name2 = "Felix";
+            document.write("name2 value before scope: "+ name2 + "<br />");
+            if (true) {
+                let name2 = "Rai Shi";
+                document.write("name2 value in scope: "+ name2 + "<br />");
+            }
+            document.write("name2 value after scope: "+ name2 + "<br />");
+
+            // let name2 = "Dante";
+            // document.write("name2 value after redeclaration: "+ name + "<br />"); error
+            // can not be re-declared with let but variable value can be changed.
+            name2 = "Louis";
+            document.write("name2 value after changing value: "+ name2 + "<br />");
+
+
+            // const example
+            document.write("<h2> const example : </h2><br />");
+            const name3 = "Felix";
+            document.write("name3 value before scope: "+ name3 + "<br />");
+            if (true) {
+                const name3 = "Rai Shi";
+                document.write("name3 value in scope: "+ name3 + "<br />");
+            }
+            document.write("name3 value after scope: "+ name3 + "<br />");
+
+            // const name3 = "Dante";
+            // document.write("name3 value after redeclaration: "+ name3 + "<br />"); error
+            // name3 = "Louis";
+            // document.write("name3 value after changing value: "+ name3 + "<br />");
+            // can not be re-declared with const and variable value can not be changed.
+        
+
+            // escape characters exp
+            document.write("<h2> escape character example: </h2> <br />");
+            var exp3 = " \"Hello World!\" ";
+            document.write(exp3 + "<br />");
+
+            // assigning variables each other
+            document.write("<h2> asignning variables each other example: </h2> <br />");
+            var exp4 = "Turkey";
+            var exp5 = exp4;
+            document.write("before asignning variables each other: <br />");
+            document.write("exp4: " + exp4 + "<br />");
+            document.write("exp5: " + exp5 + "<br />");
+
+            exp4 = "Germany";
+
+            document.write("after asignning variables each other: <br />");
+            document.write("exp4: " + exp4 + "<br />");
+            document.write("exp5: " + exp5 + "<br />");
+
+            // so we can see that variables are assigned by value not by reference.
+
+
+            // multiple variable declaration
+            document.write("<h2> multiple variable declaration example: </h2> <br />");
+            var exp6 = "Turkey", exp7 = "Germany", exp8 = "France";
+
+            var exp9 = "Turkey",
+                exp10 = "Germany",
+                exp11 = "France";
+
+            var exp12 = exp13 = exp14 = "Turkey";
+
+
+
+            // global and local variables
+            document.write("<h2> global and local variables example: </h2> <br />");
+
+            // global and local area is important for let and const
+            // global area
+            let exp15 = "Turkey";
+            document.write("let exp15: " + exp15 + "<br />");
+            { // local area
+                let exp15 = "Germany"; 
+                document.write("let exp15: " + exp15 + "<br />");
+
+                const exp16 = "Germany";
+                document.write("local const exp16: " + exp16 + "<br />");
+                
+                { // inner local area
+                    let exp15 = "France"; 
+                    document.write("let exp15: " + exp15 + "<br />");
+                    document.write("calling const exp16 in inner local area: " + exp16 + "<br />");
+                }
+            }
+            // can not be accessed from outside of the block
+            // document.write("calling const exp16 in outer local areea: " + exp16 + "<br />"); // give error
+
+            // how to access local variable from global area
+            if (true) {
+                exp17 = "Turkey";
+                // window.exp17 = exp17;
+            }
+            document.write("calling local exp17 in global area: " + exp17 + "<br />");
+            
+
+
+            // undefined variable
+            document.write("<h2> global and local variables example: </h2> <br />");
+
+            var exp18;
+            document.write(exp18 + "<br/>"); // undefined
+
+            exp18 = 3.14;
+            document.write(exp18 + "<br/>"); // 3.14
+
+            let exp19;
+            document.write(exp19 + "<br/>"); // undefined
+
+            exp19 = 2.71;
+            document.write(exp19 + "<br/>"); // 2.71
+
+            // const cannot be declared without value because you cannot change the value of a constant.
+        
+
+            // learning type of the variables
+            document.write("<h2> learning type of the variables: </h2> <br />");
+
+            var _name = "Rai Shi";
+            var _age = 25;
+            var _lectures = ["Math", "Physics", "Chemistry"]; // new Array("Math", "Physics", "Chemistry");
+            var _isStudent = true;
+            var _object = {name: "Rai Shi", age: 25, lectures: ["Math", "Physics", "Chemistry"], isStudent: true};
+            var _object2 = new Object();
+            var _undefined;
+            var _null = "";
+
+            var _type1 = typeof _name;
+            document.write("name: " + _name + " type: " + _type1 + "<br />");
+            var _type2 = typeof(_age);
+            document.write("age: " + _age + " type: " +  _type2 + "<br />");
+            var _type3 = typeof(_lectures);
+            document.write("lectures array: " + _lectures + " type: " +  _type3 + "<br />");
+            var _type4 = typeof(_isStudent);
+            document.write("isStudent: " + _isStudent + " type: " +  _type4 + "<br />");
+            var _type5 = typeof _object;
+            document.write("object: " + _object + " type: " +  _type5 + "<br />");
+            var _type6 = (_object2);
+            document.write("blank object: " + _object2 + " type: " +  _type6 + "<br />");
+            var _type7 = typeof _undefined;
+            document.write("undefined variable: " + _undefined + " type: " +  _type7 + "<br />");
+            var _type8 = typeof(_null);
+            document.write("null variable: " + _null + " type: " +  _type8 + "<br />");
+
+            // length()
+            document.write("<h2> length() example: </h2> <br />");
+            var text = "Hello World!";
+            document.write("text: " + text + " length: " + text.length + "<br />"); // text: Hello World! length: 12
+            
+            document.write("lectures array: " + _lectures + " length: " + _lectures.length + "<br />");  // lectures array: Math,Physics,Chemistry length: 3 
+            document.write("object: " + _object + " length: " + _object.length + "<br />"); // object: [object Object] length: undefined
+            document.write("object: " + _object.lectures + " length: " + _object.lectures.length + "<br />"); // object: Math,Physics,Chemistry length: 3
+
+
+            
+        </script>
+    </body>
+</html>

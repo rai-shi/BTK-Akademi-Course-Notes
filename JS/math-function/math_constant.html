@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Array</title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript" language="javascript">
+            
+            document.write("<h4>MAX_VALUE</h4>"); 
+            // MAX_VALUE : atanabilecek en büyük pozitif sayı değerini geri döndürür
+
+            var maximumNum = Number.MAX_VALUE;
+            document.write(maximumNum + "<br />"); // 1.7976931348623157e+308
+
+
+            document.write("<h4>MIN_VALUE</h4>"); 
+            // MIN_VALUE : atanabilecek en küçük negatif sayı değerini geri döndürür
+
+            var minimumNum = Number.MIN_VALUE;
+            document.write(minimumNum + "<br />"); // 5e-324
+
+
+            document.write("<h4>POSITIVE_INFINITY</h4>"); 
+            // POSITIVE_INFINITY : atanabilecek en büyük pozitif sayı değerinden büyük sayılarda sonsuzluk değerini döndürür.
+
+            var positiveInfinity = Number.POSITIVE_INFINITY;
+            document.write(positiveInfinity + "<br />"); // Infinity
+
+            document.write(maximumNum + 9); // 1.7976931348623157e+308
+            // bu pek dikkat edilebilir bir değer olmadığından değer hala MAX_VALUE döner
+            document.write("<br />");
+
+            document.write(maximumNum * 2); // Infinity
+
+
+            document.write("<h4>NEGATIVE_INFINITY</h4>"); 
+            // NEGATIVE_INFINITY : atanabilecek en küçük negatif sayı değerinden küçük sayılarda negatif sonsuzluk değerini döndürür.
+
+            var negativeInfinity = Number.NEGATIVE_INFINITY;
+            document.write(negativeInfinity + "<br />"); // -Infinity
+
+            document.write(minimumNum + 9); // 9
+            document.write("<br />");
+
+            document.write(minimumNum / 2); // 0
+            document.write("<br />");
+
+            document.write((-Number.MAX_VALUE)*2); // -Infinity
+
+
+            // MAX_SAFE_INTEGER
+            document.write("<h4>SAFE_INT</h4>"); 
+            maxSafeInt = Number.MAX_SAFE_INTEGER
+            document.write(maxSafeInt + "<br />"); // 9007199254740991
+
+
+            // MIN_SAFE_INTEGER
+            document.write("<h4>SAFE_INT</h4>"); 
+            minSafeInt = Number.MIN_SAFE_INTEGER
+            document.write(minSafeInt + "<br />"); // -9007199254740991
+
+
+            // NaN
+            document.write("<h4>NaN</h4>"); 
+            // NaN : değerin sayı olmaması durumunda geriye döner. Not a number
+
+            document.write("Rai"*2); // NaN
+            document.write("<br />");
+            document.write("Rai"*"Felix"); // NaN
+
+            
+            // EPSILON
+            // JavaScript'te iki sayı arasındaki en küçük farkı temsil eden sabit bir özelliktir. Bu, özellikle kayan noktalı aritmetik işlemlerde hassasiyet sorunlarını çözmek için kullanılır.
+            document.write("<h4>EPSILON</h4>"); 
+            document.write(Number.EPSILON); 
+            document.write("<br />");
+
+            const a = 0.1 + 0.2;
+            const b = 0.3;
+            document.write(Math.abs(a - b) < Number.EPSILON); // Çıktı: true
+
+
+            // E : euler sabiti
+            document.write("<h4>euler constant</h4>"); 
+            document.write(Math.E);  // 2.718281828459045
+ 
+
+            // LN2 : 2 sayısının doğal logaritma değerini geri döndürür
+            document.write("<h4>LN2</h4>"); 
+            document.write(Math.LN2);  // 0.6931471805599453
+
+
+            // LN10 : 10 sayısının doğal logaritma değerini geri döndürür
+            document.write("<h4>LN10</h4>"); 
+            document.write(Math.LN10);  // 2.302585092994046
+
+            // LOG2E : logaritmic result of euler constant in base 2 
+            document.write("<h4>LOG2E</h4>"); 
+            document.write(Math.LOG2E);  // 1.4426950408889634
+
+            // LOG10E : logaritmic result of 10 in base 2 
+            document.write("<h4>LOG10E</h4>"); 
+            document.write(Math.LOG10E);  // 0.4342944819032518
+
+            // PI constant
+            document.write("<h4>PI</h4>"); 
+            document.write(Math.PI);  // 3.141592653589793
+
+            // SQRT1_2 : 1/2'nin karekökü
+            document.write("<h4>SQRT1_2</h4>"); 
+            document.write(Math.SQRT1_2);  // 0.7071067811865476
+
+            // SQRT2 : 2'nin karekökü
+            document.write("<h4>SQRT2</h4>"); 
+            document.write(Math.SQRT2);  // 1.4142135623730951
+        </script>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>DOM Style</title>
+
+        <style>
+            .className{
+                font-size: 32px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="id1" name="name1">Python</div>
+        <div id="id2" style="background-color: burlywood;" name="name2">JavaScript</div>
+        <div id="id3" name="name3">R</div>
+        <br>
+        <div id="result-area"></div>
+        <script type="text/javascript" language="javascript">
+        // style
+        // belge içerisindeki html elemanına veya elemanlarına css özellikleri ve değerleri eklemek veya referansını elde etmek için kullanılır 
+        
+        var item1 = document.getElementById("id1").style.backgroundColor = "beige";
+        var item1 = document.getElementById("id1").style.color = "darkgreen";
+        var item1 = document.getElementById("id1").style.border = "5px dotted cadetblue";
+        var item1 = document.getElementById("id1").style.padding = "2px";
+
+        var ref1 = document.getElementById("id2").style.backgroundColor;
+
+        document.getElementById("result-area").innerHTML = "refereans : " + ref1;
+        // refereans : burlywood
+        
+        var customStyle = document.getElementsByTagName("STYLE")[0]
+        // var addedStyle = document.createAttribute("style");
+        // addedStyle.value = customStyle.innerHTML;
+        // document.getElementById("result-area").attributes.setNamedItem(addedStyle);
+
+        var addedClass = document.createAttribute("class");
+        addedClass.value = "className";
+        document.getElementById("result-area").attributes.setNamedItem(addedClass);
+        </script>
+    </body>
+</html>
+
+

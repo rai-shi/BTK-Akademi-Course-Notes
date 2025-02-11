@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            div {
+                border-color:red;
+                border-style: solid;
+            }
+            #big {
+                width: 200px;
+                height: 100px;
+                background-color: yellow;
+                position: fixed; /* sabit bir konumda duracak */
+                right:0px;
+                bottom:0px; /* sayfanın sağ alt köşesinde duracak */
+            }
+            #little {
+                width: 100px;
+                height: 50px;
+                background-color: pink;
+                position: relative; /* bulunduğu konuma göre hareket edecek */
+                left: 50px; 
+                top: 50px;
+            }
+            #another-one {
+                width: 100px;
+                height: 50px;
+                background-color: rgb(67, 67, 185);
+                position: absolute; /* en yakın üstteki relative ya da absolute konumlu elemana göre hareket edecek */
+                left: 10px;
+                bottom: 75px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="big">
+            <div id="another-one"></div>
+        </div>
+        <div id="little"> </div>
+    </body>
+</html>

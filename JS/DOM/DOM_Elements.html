@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="tr-TR" id="main">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>DOM Elements</title>
+        <style> 
+        .text-area {
+            background-color: bisque;
+            width: 500px;
+            height: 500px;
+            border: 5px solid black;
+            margin: 10px;
+            padding: 20px;
+        }
+        .container {
+            background-color: teal;
+            width: 250px;
+            height: 250px;
+            overflow: auto;   
+        }
+        </style>
+    </head>
+    <body>
+        <div id="cont" class="container">
+            <div id="sub" class="text-area">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Donec porta leo mi, dapibus condimentum enim dignissim id. Pellentesque lacinia mauris a nunc iaculis congue. 
+            Fusce interdum sapien vitae tincidunt molestie. Nulla facilisi. Aliquam lorem tellus, feugiat et imperdiet sit amet, condimentum et ligula. 
+            Sed magna dui, cursus vitae posuere sed.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Donec porta leo mi, dapibus condimentum enim dignissim id. Pellentesque lacinia mauris a nunc iaculis congue. 
+            Fusce interdum sapien vitae tincidunt molestie. Nulla facilisi. Aliquam lorem tellus, feugiat et imperdiet sit amet, condimentum et ligula. 
+            Sed magna dui, cursus vitae posuere sed.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Donec porta leo mi, dapibus condimentum enim dignissim id. Pellentesque lacinia mauris a nunc iaculis congue. 
+            Fusce interdum sapien vitae tincidunt molestie. Nulla facilisi. Aliquam lorem tellus, feugiat et imperdiet sit amet, condimentum et ligula. 
+            Sed magna dui, cursus vitae posuere sed.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Donec porta leo mi, dapibus condimentum enim dignissim id. Pellentesque lacinia mauris a nunc iaculis congue. 
+            Fusce interdum sapien vitae tincidunt molestie. Nulla facilisi. Aliquam lorem tellus, feugiat et imperdiet sit amet, condimentum et ligula. 
+            Sed magna dui, cursus vitae posuere sed.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Donec porta leo mi, dapibus condimentum enim dignissim id. Pellentesque lacinia mauris a nunc iaculis congue. 
+            Fusce interdum sapien vitae tincidunt molestie. Nulla facilisi. Aliquam lorem tellus, feugiat et imperdiet sit amet, condimentum et ligula. 
+            Sed magna dui, cursus vitae posuere sed.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Donec porta leo mi, dapibus condimentum enim dignissim id. Pellentesque lacinia mauris a nunc iaculis congue. 
+            Fusce interdum sapien vitae tincidunt molestie. Nulla facilisi. Aliquam lorem tellus, feugiat et imperdiet sit amet, condimentum et ligula. 
+            Sed magna dui, cursus vitae posuere sed.
+            </div>
+        </div>
+        <br>
+        <div><span id="result1"></span></div>
+        <div><span id="result2"></span></div>
+        <script type="text/javascript" language="javascript">
+            // scrollWidth
+            // belge içerisindeki herhangi bir HTML elemanının toplam yatay kaydırma genişliği değerini elde etmek için kullanılır
+            // paddingleft + genişlik + paddingright
+            
+            // scrollHeight
+            // belge içerisindeki herhangi bir HTML elemanının toplam yatay kaydırma yüksekliği değerini elde etmek için kullanılır
+            // paddingtop + yükseklik + paddingbottom
+          
+            var container = document.getElementById("cont");
+            document.getElementById("result1").innerHTML = "scrollWidth: " + container.scrollWidth + "<br />";
+            document.getElementById("result2").innerHTML = "scrollHeight: " + container.scrollHeight + "<br />";
+            /*
+                scrollWidth: 570
+                scrollHeight: 570
+            */
+      </script>
+    </body>
+</html>
+</html>

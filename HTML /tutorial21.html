@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            * {
+                /* border-style: solid; */
+            }
+            input[type=submit]{
+                background-color: green;
+                color: whitesmoke;
+                font-size: 16px;
+                font-weight: bold;
+                padding: 10px;
+                margin: 10px;
+                border-radius: 10px;
+                border-color: darkgreen;
+                border-width: 5px;
+                box-shadow: 5px 5px 5px darkgreen;
+            }
+            input[type=reset]{
+                background-color: red;
+                color: whitesmoke;
+                font-size: 16px;
+                font-weight: bold;
+                padding: 10px;
+                margin: 10px;
+                border-radius: 10px;
+                border-color: darkred;
+                border-width: 5px;
+                box-shadow: 5px 5px 5px darkred;
+            }
+            input[type=reset]:active{
+                background-color: darkred;
+                border-color: red;
+            }
+            .text-label{
+                width: 75px;
+                display: inline-block; /* inline halinde iken width uygulanmıyordu */
+                margin: 0 10px 0 0;
+            }
+            .row-container{
+                margin: 10px;
+                display: flex; 
+                align-items: center; /* y ortalıyor */
+                /* justify-content: center; x de ortalıyor */   
+            }
+            .button-container{
+                margin: 10px;
+                display: flex; 
+                align-items: center; /* y ortalıyor */
+                justify-content: center; /* x de ortalıyor */
+            }
+            .column-container{
+                margin: 10px;
+                display: flex; 
+                flex-direction: column; /* y ekseninde sıralıyor */
+                align-items: center; /* y ortalıyor */
+                justify-content: center; /* x de ortalıyor */
+            }
+        </style>
+    </head>
+    <body>
+        <form action="">
+            <div class="row-container">
+                <label class="text-label" for="name">Name: </label>
+                <input type="text" name="name" id="name" value="Enter your name...">    
+            </div>
+            <div class="row-container">
+                <label class="text-label" for="email">Email: </label>
+                <input type="email" name="email" id="email" value="Enter your email...">
+            </div>
+            <div class="row-container">
+                <label class="text-label" for="message">Message: </label>
+                <textarea name="message" id="message" cols="80" rows="10">Enter your message...</textarea>  
+            </div>
+
+            <div class="button-container">
+            <input type="submit" value="Send">
+            <input type="reset" value="Clear">
+            </div>
+            <br>
+            <div class="column-container" >
+            <input type="submit" value="Send">
+            <input type="reset" value="Clear">
+            </div>
+        </form>
+    </body>
+</html>

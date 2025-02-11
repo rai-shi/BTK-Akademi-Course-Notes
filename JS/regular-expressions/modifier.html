@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Regex modifiers</title>
+
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript" language="javascript">
+
+            // düzenli ifade oluşturma kuralları
+
+            // method-1, constructor
+            // variable = new RegExp("Pattern");
+            // variable = new RegExp("Pattern", "modifiers")
+
+            // method-2, literal notation
+            // variable = /Pattern/
+            // variable = /Pattern/modifiers
+
+
+            // regex functions
+            document.write("<h3>regex function</h3>"); 
+
+
+            // match()
+            // kendisine parametre olarak verilen düzenli ifadeli değer doğrultusunda değişken içeriğini kontrol eder
+            // ve aranan değerlerin eşleşmesi durumunda eşleşmeyi sağlyan değişken içeriği değerlerinden yeni bir dizi oluşturarak, oluşturduğu dizi değerini geriye döndürür.
+            document.write("<h4>match()</h4>"); 
+
+            var text        = "Hey Rai wassup!";
+            var exp         = new RegExp("Rai");    // /Rai/;
+
+            var result      = text.match(exp);
+            document.write(result + "<br />");
+
+            var exp2            = new RegExp("bidi");    // /Rai/;
+            var result_null    = text.match(exp2);
+            document.write(result_null + "<br />");      // null
+
+
+            // modifier g
+            // düzenli ifade dahilinde kontrol edilecek olan değişken içeriğinin tamamının kontrol edilmesini sağlar
+            document.write("<h4>g modifier</h4>"); 
+
+            var text2   = "Rai lorem ipsum Rai, Rai";
+
+            var result2 = text2.match(exp); 
+            document.write(result2 + "<br />");     // Rai
+
+            var exp_g    = /Rai/g;                   // new RegExp("Rai", "g");
+
+            var result3 = text2.match(exp_g);
+            document.write( typeof result3 + " : " + result3 + "<br />");   // object : Rai,Rai,Rai
+
+
+            // global attribute
+            // düzenli ifade içerisinde g ayarının kullanılıp kullanılmadığını kontrol ederek boolean veri türünde sonucu geriye döndürür
+            // boolean geri döner
+            document.write("<h4>global</h4>"); 
+
+            var g_check1 = exp.global;
+            var g_check2 = exp_g.global;
+
+            document.write(exp + " ->" + g_check1 + "<br />");     // /Rai/ ->false
+            document.write(exp_g + " ->" + g_check2 + "<br />");     // /Rai/g ->true
+
+            
+            // modifier i
+            // kontrol edilecek ifadenin büyük harf küçük harf ayrımı olmaksızın kontrol edilmesini sağlar 
+            document.write("<h4>i modifier</h4>"); 
+
+            var text3   = "Rai lorem ipsum rai, Rai, Rairai, dfdjraidfs";
+
+            var exp_gi   = /Rai/gi;                   // new RegExp("Rai", "i");
+
+            var result4 = text3.match(exp_gi);
+            document.write( result4 + "<br />");   // Rai,rai,Rai,Rai,rai,rai
+
+
+            // ignoreCase attribute
+            // regex ifade içinde i ayarının kullanılıp kullanılmadığını kontrol eder
+            // boolean geri döner
+            document.write("<h4>ignoreCase</h4>"); 
+
+            var i_check1 = exp.ignoreCase;
+            var i_check2 = exp_g.ignoreCase;
+            var i_check3 = exp_gi.ignoreCase;
+
+            document.write(exp + " ->" + i_check1 + "<br />");     // /Rai/ ->false
+            document.write(exp_g + " ->" + i_check2 + "<br />");     // /Rai/g ->false
+            document.write(exp_gi + " ->" + i_check3 + "<br />");     // /Rai/gi ->true
+
+
+            // modifier m
+            // mantığı ne anlamadım ???????????
+            // düzenli ifade dahilinde kontrol edilecek olan değişken içeriğinin birden fazla satırı varsa tüm satırların kontrol edilmesini sağlar
+            // m bayrağı eklendiğinde:
+            //      ^ her bir satırın başlangıcına eşleşir.
+            //      $ her bir satırın sonuna eşleşir.
+            document.write("<h4>m modifier</h4>"); 
+
+            var text4   = "Rai lorem ipsum rai\n Rai, Rairai\ndfdjraidfs";
+            var text5   = `Rai lorem ipsum rai
+                            Rai, Rairai
+                            dfdjraidfs
+                            RaiRAI`;
+
+            var exp_m   = /Rai/m;                   // new RegExp("Rai", "m");
+
+            var result5 = text4.match(exp_m);
+            document.write( result5 + "<br />");   // Rai
+
+            var result6 = text5.match(exp_m);
+            document.write( result6 + "<br />");   // Rai
+
+            // var exp_gim = /^Rai$/; // iki sonuçta null
+            // var exp_gim = /^Rai$/m; // iki sonuçta null
+            var exp_m2 = /^Rai/m; // iki sonuçta Rai
+            // var exp_gim = /Rai$/m; // iki sonuçta null
+
+            var result7 = text4.match(exp_m2);
+            document.write( result7 + "<br />");   // Rai
+
+            var result8 = text5.match(exp_m2);
+            document.write( result8 + "<br />");   // Rai
+
+            var exp_gim = /Rai/gim; // iki sonuçta Rai
+            // var exp_gim = /Rai$/m; // iki sonuçta null
+
+            var result9 = text4.match(exp_gim);
+            document.write( result9 + "<br />");   // Rai,rai,Rai,Rai,rai,rai
+
+            var result10 = text5.match(exp_gim);
+            document.write( result10 + "<br />");   // Rai,rai,Rai,Rai,rai,rai,Rai,RAI
+
+
+            // multiline attribute
+            document.write("<h4>multiline</h4>"); 
+
+            var m_check1 = exp.multiline;
+            var m_check2 = exp_g.multiline;
+            var m_check3 = exp_m.multiline;
+            var m_check4 = exp_m2.multiline;
+            var m_check5 = exp_gim.multiline;
+
+            document.write(exp      + " ->" + m_check1 + "<br />");     // /Rai/ ->false
+            document.write(exp_g    + " ->" + m_check2 + "<br />");     // /Rai/g ->false
+            document.write(exp_m    + " ->" + m_check3 + "<br />");     // /Rai/m ->true
+            document.write(exp_m    + " ->" + m_check4 + "<br />");     // /Rai/m ->true
+            document.write(exp_gim  + " ->" + m_check5 + "<br />");     // /Rai/gim ->true
+        
+            
+            // modifier d
+            // ??????????????????*
+        
+        </script>
+    </body>
+</html>

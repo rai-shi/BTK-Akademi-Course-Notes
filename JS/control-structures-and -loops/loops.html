@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Control Structures</title>
+    </head>
+    <body>
+        <script type="text/javascript" language="javascript">      
+            // while - do while
+            document.write("<h2> while - do while </h2> <br />");
+
+            count = 0;
+            while(count<10)
+            {
+                document.write(count++);
+            }
+            document.write("<br />");
+
+            count = 0;
+            do{
+                document.write(count++);
+            }
+            while(count<10);
+            document.write("<br />");
+
+
+            // for - for in
+            document.write("<h2> for - for in </h2> <br />");
+
+            for (var i=10; i>=0; --i)
+            {
+                document.write(i);
+            }
+            document.write("<br />");
+
+            var _array = Array("Cheery", "Apple", "Banana", "Kiwi", "Orange");
+            for(var element in _array)
+            {
+                document.write(_array[element] + "<br />");
+            }
+            document.write("<br />");
+
+
+            // break in loops
+            document.write("<h2> break </h2> <br />");
+            
+            for(var element in _array)
+            {
+                document.write(_array[element] + "<br />");
+                if (_array[element] === "Banana") break;
+            }
+            document.write("<br />");
+
+            count = 0;
+            do{
+                document.write(count++);
+                if(count == 6) break;
+            }
+            while(count<10);
+            document.write("<br />");
+
+            // continue in loops     
+            // it stops in loops in where continue keyword is written and then turn back to start with next value and continue.
+            document.write("<h2> continue </h2> <br />");
+            
+            var _object = {color1:"Black",
+                            color2:"Green",
+                            color3:"Red",
+                            color4:"Pink",
+                            color5:"Blue"}
+            for(var key in _object)
+            {
+                if(_object[key] == "Red") 
+                {
+                    continue;
+                }
+                document.write(key + " : " + _object[key] + "<br />");
+            }
+            document.write("<br />");       
+        </script>
+    </body>
+</html>

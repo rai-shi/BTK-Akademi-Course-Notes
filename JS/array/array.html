@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Array</title>
+    </head>
+    <body>
+        <script type="text/javascript" language="javascript">
+        // array: bir değişken içinde toplanmış, içerisinde her türden veriyi depolamak için kullanılan sıralı veri gruplarına verilen isimdir.
+        // indexler her zaman 0 ile başlar ve bir artarak devam eder.
+        document.write("<h2>array basics</h2>");
+
+        // declaration
+        var array = []
+        var names = ["Pomeo", "Dante", "Rai", "Felix"];
+        document.write(names);          // Pomeo,Dante,Rai,Felix
+        
+        document.write("<br />");
+
+        // accessing an index
+        document.write(names[0]);       // Pomeo
+
+        document.write("<br />");
+
+        // decalaration with constructor
+        var names2 = new Array("James", "Sirius", "Remus", "Regulus");
+        document.write(names2);         // James,Sirius,Remus,Regulus
+
+        document.write("<br />");
+
+        // eleman sayısı belirtilerek tanımlamak daha doğruymuş
+        // fakat daha az ya da daha fazla tanımlama da yapılabilir
+        var names3 = new Array(7);
+        names3[0] = "Frodo";
+        names3[1] = "Sam";
+        names3[2] = "Merry";
+        names3[3] = "Pippin";
+        document.write(names3);         // Frodo,Sam,Merry,Pippin,,,
+
+        document.write("<br />");
+
+        // karışık array
+        // dizi içinde elemanlar oluşturuluyorsa " ile başlıyorsa " ile bitmeli ' ile başlıyorsa ' ile bitmeli
+        var num = 5;
+        var alpanumeric = ["string", 'char', num, 63.4];
+        document.write(alpanumeric);      // string,char,5,63.4
+
+        document.write("<br />");
+
+        // assigning array variable to different variable
+        // copying by reference
+        var colors = ["blue", "red", "yellow", 'black'];
+        colors_new = colors;
+        document.write(colors + "<br />");
+        document.write(colors_new + "<br />");
+
+        colors.push("pink");
+        document.write(colors + "<br />");
+        document.write(colors_new);
+
+        document.write("<br />");
+
+        // assigning after declaration
+        var array1;
+        array1 = [".", ","];                // new Array ile de yapılabilir
+
+        let array2;
+        array2 = ["!", "?"];                // new Array ile de yapılabilir
+
+        // const array3;
+        // array3 = ["7", "8"];
+        // error because const
+
+        // burada dizi değişmiyor dizi elemanları değişiyor dolayısıyla const buna izin verir
+        const colors2 = new Array(4);
+        colors2[0] = "Black";
+        colors2[1] = "Red";
+        colors2[2] = "Blue";
+        colors2[3] = "Yellow";
+        document.write(colors2);            // Black,Red,Blue,Yellow
+
+        document.write("<br />");
+
+        // değişkenleri dizi gibi görerek karakterleri yakalama
+        var stringVar = "Hello";
+        document.write(stringVar[0]);       // H
+
+        document.write("<br />");
+
+        // garip bir şey
+        // indislere etki etmek
+        var array4 = new Array(3);
+        array4["index0"] = "value1";
+        array4["index1"] = "value2";
+        array4["index2"] = "value3";
+        document.write(array4 + "<br />");
+        document.write(array4["index0"] + "<br />");
+        document.write(array4["index1"] + "<br />");
+        document.write(array4["index2"] + "<br />");
+
+
+        document.write("<br />");
+
+
+        document.write("<h3>multi dimensional array</h3>");
+
+        // multi-dimensional array
+        var dimensional = [
+            ["Felix", "Dante" ,"Rai"],
+            ["26", "26" ,"24"],
+            ["Musician", "Game Dev" ,"ML Dev"],
+        ];
+        document.write(dimensional + "<br />");
+        document.write(dimensional[0][2] + "-" + dimensional[1][2] + "-" + dimensional[2][2]);
+        document.write("<br />");
+
+        /*
+        // this one possible also
+        var dimensional = [
+            new Array ("Felix", "Dante" ,"Rai"),
+            new Array ("26", "26" ,"24"),
+            new Array ("Musician", "Game Dev" ,"ML Dev"),
+        ];
+        */
+
+        var person1 = ["Felix", 26, "Musician"]
+        var person2 = ["Rai", 24, "ML Dev"]
+        var person3 = ["Dante", 26, "Game Dev"]
+        
+        var personArray = [person1, person2, person3];
+        // var personArray = new Array(person1, person2, person3); // this one is possible
+
+        document.write(personArray + "<br />");
+        document.write("Ages-> "+ personArray[0][1] + "-" + personArray[1][1] + "-" + personArray[2][1])
+        
+        document.write("<br />");
+
+
+        document.write("<br />");
+
+        document.write("<h3>array in loop </h3>");
+
+        // array in loop
+        for (var item in stringVar)
+        {
+            document.write(stringVar[item] + " ");
+            // document.write(item);
+        }
+        document.write("<br />");
+
+        for (var item in personArray)
+        // item holds index values
+        {
+            document.write(item + "-" + personArray[item] + "<br />");
+            // document.write(item);
+        }
+        /*
+        0-Felix,26,Musician
+        1-Rai,24,ML Dev
+        2-Dante,26,Game Dev
+        */
+        // loop with multi dimensional array
+        for (var item in personArray)
+        {
+            if (Array.isArray(personArray[item]))
+            {
+                for (var index in personArray[item])
+                {
+                    document.write(item + "."+ index + "-" + personArray[item][index] + "<br />");
+                }
+            }
+            else
+            {
+                document.write(item + "-" + personArray[item] + "<br />");
+            }
+        }
+        /*
+        0.0-Felix
+        0.1-26
+        0.2-Musician
+        1.0-Rai
+        1.1-24
+        1.2-ML Dev
+        2.0-Dante
+        2.1-26
+        2.2-Game Dev
+        */
+
+        document.write("<h2>array methods</h2>");
+
+        // methods
+
+        document.write("<h4>isArray()</h4>");
+        // Array.isArray() -> Boolean
+        // bir değişkenin içeriğinin dizi olup olmadığını kontrol eder
+        document.write(stringVar+ " is array? "+ Array.isArray(stringVar) + "<br />");
+        document.write(personArray+ " is array? "+ Array.isArray(personArray) + "<br />");
+        // document.write(personArray+ " is array? "+ (personArray.isArray()) + "<br />"); // error
+
+
+        document.write("<h4>length</h4>");
+        // [].length
+        // dizi içeriğinin eleman sayısını veya dizi elemanının karakter sayısını döndürür
+        document.write("Array: " + stringVar+ " Length: " + stringVar.length + "<br />");
+        document.write("Array: " + personArray+ " Length: " + personArray.length + "<br />");
+        document.write("Array: " + personArray[0]+ " Length: " + personArray[0].length + "<br />");
+
+
+        document.write("<h4>delete</h4>");
+        // delete [][i]
+        // dizi içinde belirtilen indisteki elemanın silinmesini sağlıyor
+        // indisin içi boşaltılır, index silinmez, undefined olur
+        document.write("Before deleting: " + "<br />" + personArray + "<br />");
+        delete personArray[2]
+        document.write("After deleting:" + "<br />")
+        for (var item in personArray)
+        {
+            document.write(item + "-" + personArray[item] + "<br />");
+        }
+        document.write(personArray[2] + "<br />");
+
+
+        document.write("<h4>pop()</h4>");
+        // [].pop()
+        // dizi içindeki en son elemanı siler
+        // sildikten sonra da sildiği elemanın içeriğini döndürür
+        document.write(colors+ "<br />");
+        var deletedValue = colors.pop()
+        document.write(deletedValue + " is deleted ->" + colors+ "<br />");
+
+
+        document.write("<h4>shift()</h4>");
+        // [].shift()
+        // dizi içindeki ilk elemanı siler ve sildiği elemanın değerini geri döndürür
+        document.write(colors+ "<br />");
+        var deletedValue = colors.shift()
+        document.write("First value " + deletedValue + " is deleted ->" + colors+ "<br />");
+
+
+        document.write("<h4>push()</h4>");
+        // [].push()
+        // dizinin sonuna elemanlar eklenebilmesini sağlıyor
+        document.write(colors+ "<br />");
+        colors.push("Beige");
+        var lengthValue = colors.push("Pale Almond", "Grey");
+        document.write(colors+ " with the length: " + lengthValue + "<br />");
+
+
+        document.write("<h4>unshift()</h4>");
+        // [].unshift()
+        // başının başına eleman veya elemanlar eklenebilmesini sağlar
+        document.write(colors+ "<br />");
+        colors.unshift("Berry Pop");
+        var lengthValue = colors.unshift("Coconut Milk", "Blue Lagoon");
+        document.write(colors+ " with the length: " + lengthValue + "<br />");
+
+
+        document.write("<h4>splice()</h4>");
+        // [].splice(start_index, deleting count)
+        // diziden eleman veya elemanlar silinebilmesini sağlar ve sildiği elemanların değerini geri döndürür.
+        // diziden eleman veya elemanlar eklenmesini sağlar ayrıca
+        for (var color in colors)
+        {
+            document.write(colors[color], "<br />");
+        }
+        deletedValues = colors.splice(1,2);
+        document.write("deleted values: " + deletedValues + "<br />");
+        document.write("after splice(1,2)" + "<br />");
+        for (var color in colors)
+        {
+            document.write(colors[color], "<br />");
+        }
+
+        document.write("<br />" + "example-2" + "<br />");
+        for (var color in colors)
+        {
+            document.write(colors[color], "<br />");
+        }
+        deletedValues = colors.splice(1);
+        document.write("deleted values: " + deletedValues + "<br />");
+        document.write("after splice(1)" + "<br />");
+        for (var color in colors)
+        {
+            document.write(colors[color], "<br />");
+        } // all deleted except index-0
+        document.write(colors[1] + "<br />"); // undefined, değeri siler array yapısı korunur
+
+        // nothing deleted if second param is 0
+        document.write("<br />" + "example-3" + "<br />");
+        for (var color in colors)
+        {
+            document.write(colors[color], "<br />");
+        }
+        deletedValues = colors.splice(0,0);
+        document.write("deleted values: " + deletedValues + "<br />");
+        document.write("after splice(0,0)" + "<br />");
+        for (var color in colors)
+        {
+            document.write(colors[color], "<br />");
+        } 
+        
+        // adding element
+        // belirtilen elemandan sonra ekleme yapılıyor yani ara yerlere ekleme yapabilir
+        document.write("<br />" + "example-4" + "<br />");
+        for (var color in colors)
+        {
+            document.write(colors[color], "<br />");
+        }
+        addedValue = colors.splice(1,0,"Red");
+        document.write("added value: " + addedValue + "<br />");
+        document.write("after splice(1,0,'Red')" + "<br />");
+        document.write(colors, "<br />");
+
+        colors.splice(3,0,"Grey", "Black");
+        document.write(colors, "<br />");
+        document.write(colors.length, "<br />");
+
+        // deletion and adding at same time
+        document.write("<br />" + "example-5" + "<br />");
+        for (var color in colors)
+        {
+            document.write(colors[color], "<br />");
+        }
+        values = colors.splice(1,2,"Pink", "Blue", "Yellow");
+        document.write("proccessed values with splice " + values + "<br />");
+        document.write("after splice(1,2,'Pink', 'Blue', 'Yellow')" + "<br />");
+        document.write(colors, "<br />");
+        // eklediği elemanın değerini döndürmüyor, sadece sildiği değerleri döndürüyor
+
+
+        document.write("<h4>slice()</h4>");
+        // slice(start_index, finish_index)
+        // kendisine verilecek olan parametreler ile tanımlanmış dizi aralığında bulunan değerleri kopyalayaral yeni bir dizi oluşturur ve oluşturduğu dizinin değerini geri döndürür.
+        // sub array oluşturur.
+        var numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+        document.write("Numbers: " + numbers + "<br />");
+        new_numbers = numbers.slice(6); // starts with index-6 and to the end
+        document.write(new_numbers + "<br />");
+
+        new_numbers2 = numbers.slice(6,12); // between index-6 index 11. 11 is included
+        document.write(new_numbers2 + "<br />");
+
+        new_numbers3 = numbers.slice(2,-5); // 
+        document.write(new_numbers3 + "<br />");
+
+        new_numbers4 = numbers.slice(-5,-2); 
+        document.write(new_numbers4 + "<br />");
+
+        new_numbers5 = numbers.slice(-2); 
+        document.write(new_numbers5 + "<br />");
+
+
+        document.write("<h4>copyWithin()</h4>");
+        // copyWithin(target, start, finish)
+        // ???????????????????????
+        // kendisine verilecek olan parametreler ile tanımlanmış dizi aralığında bulunan değerleri kopyalayarak, 
+        // parametreler doğrultusunda dizinin elemanlarını değiştirir ve dizinin değerini geriye döndürür.
+
+        var numbers2 = [1,2,3,4,5,6,7,8,9];
+        document.write("Numbers: " + numbers2 + "<br />");
+
+        new2_numbers = numbers2.copyWithin(4); // index4ün önünden başlayıp array uzunluğu kadar doldurma yapıyor dizinin başından alarak
+        document.write(new2_numbers + "<br />");
+
+        new2_numbers2 = numbers2.copyWithin(4,7); // 
+        document.write(new2_numbers2 + "<br />");
+
+        new2_numbers3 = numbers2.copyWithin(1,3,7); // 
+        document.write(new2_numbers3 + "<br />");
+
+
+        document.write("<h4>fill()</h4>");
+        // fill(value, start, finish)
+        // kendisine verilecek olan parametreler ile tanımlanmış dizi aralığında bulunan değeri, parametreler ile belirtilmiş değer doğrultusunda dizinin elemanlarını değiştirir
+        // ve dizinin elemanlarını döndürür.
+
+        var fruits = ["Apple", "Kiwi", "Banana", "Orange", "Mango", "Strawberry", "Melon"];
+        document.write(fruits + "<br />");
+
+        fruits.fill("pomegrate", 3,5);
+        document.write(fruits + "<br />");
+
+        fruits.fill("cherry");
+        document.write(fruits + "<br />");
+
+        fruits.fill("Lemon",4);
+        document.write(fruits + "<br />");
+
+
+        document.write("<h4>concat()</h4>");
+        // concat(value, start, finish)
+        // üzerinde çalışılan diziye parametre olarak verilen eleman veya elemanları yeni bir dizi olarak ekleyip
+        // yeni diziyi geri döndürür.
+
+        var people_m = ["Felix", "Harry", "Ronald","Sirius", "James", "Remus"];
+        var people_f = ["Luna", "Rai", "Lily", "Molly","Hermoine", "Hailey"];
+        var houses = ["Gryffindor", "Slytherin", "Ravenclaw", "Hufflepuff"];
+
+        document.write("Names who belongs man: " + people_m + "<br />");
+        document.write("Names who belongs woman: " + people_f + "<br />");
+
+        people = people_m.concat(people_f); // m + f
+        document.write(people + "<br />");
+
+        people_and_houses = people_m.concat(people_f, houses); // m + f + h
+        document.write(people_and_houses + "<br />"); 
+
+        people = people_m.concat(people_f[2]); 
+        document.write(people + "<br />");
+
+        document.write("<br />");
+
+        hp_house_g_r = ["Gryffindor", ["Harry", "Ron"], "Ravenclaw", ["Flitwick", "Cho Chang"]]
+        hp_house_s_h = ["Slytherin", ["Tom", "Severus"], "Hufflepuff", ["Cedric", "Tonks"]]
+        hp_house = hp_house_g_r.concat(hp_house_s_h);
+        document.write(hp_house + "<br />");
+
+
+        document.write("<h4>join()</h4>");
+        // join() 
+        // dizideki elemanların arasına kendisine parametre olarak verilen değeri ayraç olarak kullanaral string veri türünde 
+        // düz bir metin oluşturur ve bu oluşturduğu değeri geriye döndürür
+        // default ayraç ,
+
+        document.write(numbers2);
+        document.write(numbers2 + " is Array? -> " + Array.isArray(numbers2) + "<br />");
+
+        var string_numbers2 = numbers2.join();
+        document.write(string_numbers2 + " is Array? -> " + Array.isArray(string_numbers2) + "<br />");
+
+        var string_numbers2_2 = numbers2.join("*");
+        document.write(string_numbers2_2 + " is Array? -> " + Array.isArray(string_numbers2_2) + "<br />");
+
+        var string_hp_houses = hp_house_g_r.join("*");
+        document.write(string_hp_houses + "<br />"); // alt arraylere uygulanmıyor
+
+
+        document.write("<h4>toString()</h4>");
+        // toString() 
+        // Dizideki tüm elemanları içeren string veri türünde düz bir metin oluşturur.
+        // oluşturduğu değeri geri döndürür.
+
+        document.write(numbers2, "<br />");
+        document.write(numbers2 + " is Array? -> " + Array.isArray(numbers2) + "<br />");
+
+        var toString_numbers = numbers2.toString();
+        document.write(toString_numbers + " is Array? -> " + Array.isArray(toString_numbers) + "<br />");
+        document.write(typeof toString_numbers + "<br />");
+
+
+        document.write(hp_house_g_r, "<br />");
+        document.write(hp_house_g_r + " is Array? -> " + Array.isArray(hp_house_g_r) + "<br />");
+
+        var toString_hp_houses = hp_house_g_r.toString();
+        document.write(toString_hp_houses + " is Array? -> " + Array.isArray(toString_hp_houses) + "<br />");
+        document.write(typeof toString_hp_houses + "<br />");
+
+
+        document.write("<h4>valueOf()</h4>");
+        // valueOf()
+        // Üzerinde çalışılan dizi değerinin tam anlamıyla aktarmını sağlar, yeni bir dizi oluşturur ve oluşturduğu dizi değerini geriye döndürür.
+        // with reference 
+        document.write(numbers + "<br />");
+         
+        var new_numbers_with_ref = numbers.valueOf()
+
+        numbers.push("New number");
+
+        document.write(numbers + "<br />");
+        document.write(new_numbers_with_ref + "<br />");
+
+
+        document.write("<h4>indexOf()</h4>");
+        // indexOf()
+        // parametre olarak değeri arar ve ilk eşleşmeyi sağlayan elemanın indis değerini geri döndürür.
+
+        document.write(people_m + "<br />");
+        document.write(people_m.indexOf("Lily") + "<br />"); // -1
+        document.write(people_m.indexOf("James") + "<br />"); // 4
+
+
+        document.write("<h4>lastIndexOf()</h4>");
+        // lastIndexOf()
+        // son eşleşmeyi döndürür
+
+        people_m.push("James");
+        document.write(people_m + "<br />");
+        document.write(people_m.lastIndexOf("Lily") + "<br />"); // -1
+        document.write(people_m.lastIndexOf("James") + "<br />"); // 6
+
+
+        document.write("<h4>find()</h4>");
+        // find(function(element, index_of_element, array_ref))
+        // parametre olarak verilen fonksiyonu dizideki her eleman üzerine tek tek çalıştırır ve 
+        // dizi içerisinde parametrik olarak verilen değeri arar.
+        // ilk eşleşmeyi sağlayan elemanın değerini geri döndürür.
+
+        numbers.pop()
+        document.write(numbers + "<br />");
+
+        function isOdd(element, index_of_element, array_ref)
+        {
+            document.write("function params-> " + element + " " + index_of_element + " " + array_ref + "<br />");
+                
+            result = element%2;
+            document.write("mod result " + result +  "<br />");
+            if (result != 0)
+            {   
+                document.write("eşit değil" + "<br />");
+                array_ref[index_of_element] = "Odd";
+            }
+            return true;
+            // return olmazsa tüm arrayi gezer geriye undefined döner.
+        }
+        var result = numbers.find(isOdd);
+        document.write(numbers + "<br />");
+        document.write(result + "<br />");
+
+
+        document.write("<h4>findIndex()</h4>");
+        // findIndex()
+        // // findIndex(function(element, index_of_element, array_ref))
+        // parametre olarak verilen fonksiyonu dizideki her eleman üzerine tek tek çalıştırır ve 
+        // dizi içerisinde parametrik olarak verilen değeri arar.
+        // ilk eşleşmeyi sağlayan elemanın index değerini geri döndürür.
+
+        numbers.shift();
+        document.write(numbers + "<br />");
+
+        function isIndex(element, index_of_element, array_ref)
+        {
+            return element == 12 
+        }
+
+        var result = numbers.findIndex(isIndex);
+        document.write(numbers + "<br />");
+        document.write(result + "<br />"); // 10
+
+
+
+        document.write("<h4>reduce()</h4>");
+        // reduce()
+        // kendisine parametre olarak verilen fonksiyonu soldan sağa her element üzerinde tek tek olmak üzere çalıştırır
+        // ve sonucu toplayarak/birleştirerek tek bir değer olmak üzere oluşturduğu değeri geri döndürür
+        // param1 : dizi içerisinde mevcut değer öncesindeki değerlerin toplamı / birleşimi
+        // param2 : her işlemde elde edilen dizi elemanı
+        // param3 : her işlemde elde edilen dizi elemanının indexi
+        // param4 : her tekrarda diziyi tutan değişkenin referansı
+
+        numbers.splice(1,0,1);
+        document.write(numbers + "<br />");
+
+        function AddArray(value, element, index, referans)
+        {
+            document.write("index:" + index + " element:" + element + " value:" + value + "<br />");
+            return value + element
+        }
+
+        var result = numbers.reduce(AddArray);
+        document.write(result + "<br />");
+
+        document.write("<br />");
+
+        letters = ["A", "B", "C", "D", "E"];
+        document.write(letters + "<br />");
+        var letterResult = letters.reduce(AddArray);
+        document.write(letterResult + "<br />");
+
+
+
+        document.write("<h4>reduceRight()</h4>");
+        // reduceRight()
+        // aynısının sağdan sola ilerleyişi
+
+        document.write(numbers + "<br />");
+        var result2 = numbers.reduceRight(AddArray);
+        document.write(result2 + "<br />");
+
+        document.write("<br />");
+
+        document.write(letters + "<br />");
+        var letterResult2 = letters.reduceRight(AddArray);
+        document.write(letterResult2 + "<br />");
+
+
+
+        document.write("<h4>reverse()</h4>");
+        // reverse()
+        // dizi içerisindeki sıralamayı tersine çevirerek yeni bir dizi oluşturur.
+        // oluşturduğu diziyi geri döndürür
+
+        document.write(numbers + "<br />");
+        var reversedNumbers = numbers.reverse();
+        document.write(reversedNumbers + "<br />");
+
+        document.write("<br />");
+
+        document.write(letters + "<br />");
+        var reversedLetters = letters.reverse();
+        document.write(reversedLetters + "<br />");
+
+        document.write("<br />");
+
+        fruits2 = ["Apple", "Cherry", ["Strawberry", "Lemon"], "Banana", "Melon"]
+        document.write(fruits2 + "<br />");
+        var reversedFruits = fruits2.reverse();
+        document.write(reversedFruits + "<br />");
+        // iç listeye dokunulmuyor
+
+
+        document.write("<h4>sort()</h4>");
+        // sort()
+        // dizi içeriğini sıralar, bu kod unicode olarak çalışır
+        // integerlarda dahil unicode sıralama yapar, karakter karakter bakar
+
+        myList = ["X", "b", "B", "C", "1", "ü", "ş"];
+        document.write(myList.sort() + "<br />"); // 1,B,C,X,b,ü,ş
+        
+        myList2 = ["45", "21", "87", 1, 13, "1"];
+        document.write(myList2.sort() + "<br />"); // 1,1,13,21,45,87
+
+        myList3 = [5, 7, 96, 78.5, 36 ,1];
+        document.write(myList3.sort() + "<br />"); // 1,36,5,7,78.5,96
+
+        myList4 = ["Apple", "Cherry", "Strawberry", "Lemon"];
+        document.write(myList4.sort() + "<br />"); // Apple,Cherry,Lemon,Strawberry
+
+        myList5 = ["a", ".", "!", "1", 2, "A"]
+        document.write(myList5.sort() + "<br />"); // !,.,1,2,A,a
+
+        document.write("<br />");
+        
+
+        // burayı çalış !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // şimdi yazacağımız fonksiyon nesnenin prototip tabanına etki ederek çalışacak
+
+        function sortArray(right, left)
+        {
+            return right - left; // küçükten büyüğe
+            // return left - right; // büyükten küçüğe
+        }
+        function sortAlphabeticArray(right, left) // aA to zZ
+        {
+            var letters = "aAbBcCçÇdDeEfFgGğĞhHıIiİjJkKlLmMnNoOpPqQrRsSşŞtTuUüÜvVwWxXyYzZ";
+            if (right.length === 0 || left.length === 0) // if params are integer
+            {
+                return right.length - left.length;
+            }
+            else
+            {
+                var one = letters.indexOf(right[0]);
+                var two = letters.indexOf(left[0]);
+                if (one !== two)
+                {
+                    return one - two;
+                }
+                else
+                {
+                    return sortArray(right.slice(1), left.slice(1));
+                }
+            }
+            return right - left;
+            // return left - right;
+        }
+
+        document.write(myList.sort(sortAlphabeticArray) + "<br />"); // 1,b,B,C,ş,ü,X
+        
+        // document.write(myList2.sort(sortAlphabeticArray) + "<br />"); // 
+
+        document.write(myList3.sort(sortArray) + "<br />"); // 1,5,7,36,78.5,96
+
+        document.write(myList4.sort(sortAlphabeticArray) + "<br />"); // Apple,Cherry,Lemon,Strawberry
+
+        // document.write(myList5.sort(sortAlphabeticArray) + "<br />"); // 
+
+        
+
+        document.write("<h4>forEach()</h4>");
+        // forEach()
+        // kendisine parametre olarak verilen fonksiyonu dizideki her eleman üzerine tek tek çalıştırır
+        // ve geriye herhang, bir değer döndürmez
+        // fakat istenirse değerlere erişilebilir
+        // param1 : her işlemde elde edilen dizi elemanı
+        // param2 : her işlemde elde edilen dizi elemanın index değeri
+        // prama3 : tekrarlama işlemleri için dizinin atandığı değişken
+
+        numbers.sort(sortArray);
+        document.write(numbers + "<br />");
+
+        var result;
+
+        function Operation(element, index, ref)
+        {
+            result = result + element;
+            document.write("For element " + element + " result is " + result + "<br />");
+            return result;
+        }   
+        var bidi = numbers.forEach(Operation);
+        document.write("the final result is " + result + "<br />"); // 240 
+        document.write("the final bidi is " + bidi + "<br />"); // undefined
+        // because there is no return in forEach function 
+
+        document.write("<h4>some()</h4>");
+        // some()
+        // kendisine param olarak verilen fonksiyon true dönene kadar dizi elemanları üzerinde gezinilmesini sağlar
+        // param1 : her işlemde elde edilen dizi elemanı
+        // param2 : her işlemde elde edilen dizi elemanın index değeri
+        // prama3 : tekrarlama işlemleri için dizinin atandığı değişken
+
+        document.write(numbers + "<br />");
+
+        var evenIndex;
+        function isEven(element, index, ref)
+        {
+            var remainder = element % 2;
+            if (remainder == 0)
+            {
+                evenIndex = index;
+                return true;
+            }
+            else return false;
+        }  
+        var result3 = numbers.some(isEven);
+        document.write("the some result is " + result3 + "<br />"); // undefined
+        document.write("first even is " + numbers[evenIndex] + " in index "+ evenIndex + "<br />");
+
+
+        document.write("<h4>every()</h4>");
+        // every()
+        // kendisine param olarak verilen fonksiyon false dönene kadar dizi elemanları üzerinde gezinilmesini sağlar
+        // param1 : her işlemde elde edilen dizi elemanı
+        // param2 : her işlemde elde edilen dizi elemanın index değeri
+        // prama3 : tekrarlama işlemleri için dizinin atandığı değişken
+
+
+        tenEachNumbers = [10, 20, 30, 40, 50, 60, 70, 80, 15, 90, 100];
+        document.write(tenEachNumbers + "<br />");
+
+        var tenEachIndex;
+        function isTenEach(element, index, ref)
+        {
+            var remainder = element % 10;
+            if (remainder == 0)
+            {
+                return true;
+            }
+            else 
+            {
+                tenEachIndex = index;
+                return false;
+            }
+        }  
+        var result4 = tenEachNumbers.every(isTenEach);
+        document.write("the every result is " + result4 + "<br />"); // undefined
+        document.write("the number " + tenEachNumbers[tenEachIndex] + " in index "+ tenEachIndex + " isn't ten each <br />");
+
+        document.write("<h4>filter()</h4>");
+        // filter()
+        // kendisine parametre olarak verilen fonksiyonu tüm elemanlar üzerinde çalıştırır.
+        // fonksiyon geriye true değeri döndüren tüm elemanları liste yapıp geri döndürür
+        // oluşturulan yeni listeyi geri döndürür.
+        // param1 : her işlemde elde edilen dizi elemanı
+        // param2 : her işlemde elde edilen dizi elemanın index değeri
+        // prama3 : tekrarlama işlemleri için dizinin atandığı değişken
+
+
+        document.write(tenEachNumbers + "<br />");
+
+        function Threefold(element, index, ref)
+        {
+            var remainder = element % 3;
+            if (remainder == 0) return true;
+            else return false;
+        }  
+        var threefoldArray = tenEachNumbers.filter(Threefold);
+        document.write("the threefold filter result is " + threefoldArray + "<br />"); 
+
+
+        document.write("<h4>map()</h4>");
+        // map()
+        // kendisine parametre olarak verilen fonksiyonu tüm elemanlar üzerinde çalıştırır.
+        // fonksiyonun geri döndürdüğü değerlerden yeni bir dizi yapıp geri döndürür.
+        // oluşturulan yeni listeyi geri döndürür.
+        // param1 : her işlemde elde edilen dizi elemanı
+        // param2 : her işlemde elde edilen dizi elemanın index değeri
+        // prama3 : tekrarlama işlemleri için dizinin atandığı değişken
+
+
+        document.write(tenEachNumbers + "<br />");
+
+        function RemainingFromThree(element, index, ref)
+        {
+            var remainder = element % 3;
+            if (remainder == 0) return [true, remainder, element];
+            else return [false, remainder, element];
+        }  
+        var RemainingFromThreeArray = tenEachNumbers.map(RemainingFromThree);
+        document.write("the remaining from three division array map result is " + "<br />"); 
+        for (var element in RemainingFromThreeArray)
+        {
+            document.write(RemainingFromThreeArray[element] + "<br />");
+        }
+
+
+        document.write("<h4>average()</h4>");
+        // average()
+        // sayısal içerikli bir dizinin tüm elemanları üzerinde çalışarak dizinin ortalamasını bulur
+        // javascriptin en büyük özelliği prototip tabanlı olması ve her nesnenin fonksiyonun prototipine etki edilebilmesi
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        
+        // Array.prototype.  burada bir sürü özellik var bak
+        // böyle tanımlama yapmadan yazınca fonksiyon bulunamıyor??? prototip nesnesine inmemiz gerekiyormuş
+
+        Array.prototype.average = function() {  
+            var sum = 0;
+            for (var i = 0; i < this.length; i++)
+            {
+                sum += this[i];
+            }
+            return (sum / this.length);
+        }
+         
+        document.write("Average-> " + numbers.average() + " the array of " + numbers + "<br />");
+        document.write("Average-> " + tenEachNumbers.average() + " the array of " + tenEachNumbers + "<br />");
+
+
+        document.write("<h4>shuffle()</h4>");
+        // shuffle()
+        // dizinin her elemanı üzerinde çalıştırarak diziyi karıştırıyor ve yeni diziyi geri döndürüyor
+
+        Array.prototype.shuffle = function()
+        {
+            arrayLength = this.length;
+            while(--arrayLength > 0)
+            {
+                var randomNum = Math.floor(Math.random()*(arrayLength + 1));
+                var temp = this[randomNum];
+                this[randomNum] = this[arrayLength];
+                this[arrayLength] = temp;
+                return this;
+            }
+        }
+
+        document.write(numbers + "<br />");
+        document.write("After shuffled: " + numbers.shuffle() + "<br />");
+
+        document.write(tenEachNumbers + "<br />");
+        document.write("After shuffled: " + tenEachNumbers.shuffle() + "<br />");
+
+
+        document.write(myList4 + "<br />");
+        document.write("After shuffled: " + myList4.shuffle() + "<br />");
+
+        </script>
+
+    </body>
+</html>

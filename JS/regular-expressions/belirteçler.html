@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Array</title>
+
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript" language="javascript">
+            
+            // regex belirteçler
+            document.write("<h3>regex konum belirteçleri</h3>"); 
+
+            document.write("<h4>^</h4>");
+            // ^
+            // düzenli ifade dahilinde kontrol edilecek olan değişken içeriği karakter diziliminin başlangıcı ile düzenli ifade arasında eşleşme aramak için kullanılır
+            // patternin metnin ilk başında olmasını istiyor 
+            // gim modifier kullanılabilir
+           
+            var text = "Hi Felix, Hello Rai!!!";
+
+            var exp1 = new RegExp("Felix");
+            var result = exp1.test(text);
+
+            document.write(text + "<br />"); // Hi Felix, Hello Rai!!!
+            
+            document.write(result + "<br />"); // true
+
+            var exp2 = new RegExp("^Felix");
+            var result2 = exp2.test(text);
+            document.write(result2 + "<br />"); // false
+
+
+            var text2 = "Felix Dupain";
+            var result3 = exp2.test(text2);
+            document.write(result3 + "<br />"); // true
+            // ^felix için i ile de true verecektir.
+
+
+            document.write("<h4>$</h4>");
+            // $
+            // düzenli ifade dahilinde kontrol edilecek olan değişken içeriği karakter diziliminin sonu ile düzenli ifade arasında eşleşme aramak için kullanılır
+            
+            document.write(text + "<br />"); // Hi Felix, Hello Rai!!!
+
+            var exp3 = RegExp("Hi$");
+            var result4 = exp3.test(text);
+            document.write(result4 + "<br />"); // false
+
+            var exp4 = RegExp("!$");
+            var result5 = exp4.test(text);
+            document.write(result5 + "<br />"); // true
+
+
+            document.write("<h4>b</h4>");
+            // b
+            // düzenli ifade dahilinde kontrol edilecek olan değişken içeriğinin düzenli ifadeye uygun olabilecek metin parçalarını, karakter dizilimi içerisindeki "kelimelerin" başında ya da sonunda aramak için kullanılır
+
+            var text3 = "Felixx";
+            var text4 = "xFelixx";
+            document.write(text3 + "<br />"); // -Felix
+            document.write(text4 + "<br />"); // -Felix-
+
+            var exp5 = RegExp("\\bfelix", "i")
+            
+            var result6 = text3.search(exp5);
+            document.write(result6 + "<br />"); // 0 0. indexte buldu
+          
+            var result7 = text4.search(exp5);
+            document.write(result7 + "<br />"); // -1 bulamadı
+            
+            // "\\bfelix" kelimenin başında arar
+            // "felix\\b" kelimenin sonunda arar
+
+            
+            document.write("<h4>B</h4>");
+            // B
+            // düzenli ifade dahilinde kontrol edilecek olan değişken içeriğinin düzenli ifadeye uygun olabilecek metin parçalarını, karakter dizilimi içerisindeki "kelimelerin" içerisinde aramak için kullanılır
+
+            var text5 = "Felix, heyfelixhey";
+            document.write(text5 + "<br />"); // Felix, heyfelixhey
+
+            var exp6 = RegExp("\\Bfelix", "gim")            
+            var result8 = text5.search(exp6);
+            document.write(result8 + "<br />"); // 10
+          
+            document.write(text2 + "<br />"); // Felix Dupain
+
+            var exp7 = RegExp("\\Bfelix", "gim")
+            var result9 = text2.search(exp7);
+            document.write(result9 + "<br />"); // 10
+            
+
+            document.write("<h4>?=</h4>");
+            // ?=
+            // Düzenli ifade dahilinde kontrol edilecek değişken içeriği karakter dizilimi içerisindeki belirtilen bir referans değeri önünde düzenli ifade ile eşleşebileicek değerleri aramak için kullanılır.
+
+            text6 = "Hi Felix Hi Rai!"
+            document.write(text6 + "<br />") ;
+
+            var exp8 = new RegExp("Hi(?= Felix)"); // önünde " Felix" ifadesi olmak şartı ile Hi patterni
+
+            var result10 = text6.search(exp8);
+            document.write(result10 + "<br />"); // 0
+
+
+            document.write("<h4>?!</h4>");
+            // ?!
+            // düzenli ifade dahilinde kontrol edilecek olan değişken içeriği karakter dizilimi içerisindeki belirtilen bir referans değer ile "takip edilmeyen değerleri" düzenli ifade ile eşleşebilecek değerleri aramak için kullanılır
+            document.write(text6 + "<br />") ;
+
+            var exp9 = new RegExp("Hi(?! F)"); // önünde " F" ifadesi olmama şartı ile Hi patterni
+            
+            var result11 = text6.search(exp9);
+            document.write(result11 + "<br />"); // 9
+
+
+
+            document.write("<h3>nicelik belirleyiciler</h3>");
+
+            document.write("<h4>{x}</h4>");
+            // {x}
+            // düzenli ifade dahilinde kontrol edilecek olan değişken içeriği karakter diziliminde bulunan değerin en az x defa tekrarlanmış olması gerektiğini belirtmek için kullanılır.
+
+            var text7 = "HeEyeeee";
+            document.write(text7 + "<br />");
+
+            var exp10 = new RegExp("e{2}");
+            var result12 = text7.search(exp10);
+            document.write(result12 + "<br />"); // 4
+
+            var exp11 = new RegExp("e{2}", "gi");
+            var resut13 = text7.search(exp11);
+            document.write(resut13 + "<br />"); // 1
+
+
+            document.write("<h4>{x,}</h4>");
+            // {x,}
+            // tıpkı {x} gibi çalışır
+            // x defa ve daha fazla için çalışır
+
+            document.write(text7 + "<br />"); // HeEyeeee
+
+            // {x} için 
+            var exp10 = new RegExp("e{2}");
+            var result14 = text7.match(exp10);
+            document.write(result14 + "<br />");  // ee
+
+            // {x,} için
+            var exp11 = new RegExp("e{2,}"); 
+            var result15 = text7.match(exp11);
+            document.write(result15 + "<br />");  // eeee
+
+
+            document.write("<h4>{x,y}</h4>");
+            // {x,y}
+            // en az x defa en fazla y defa tekrarlanmış ifadeler
+
+            document.write(text7 + "<br />"); // HeEyeeee
+
+            var exp12 = new RegExp("e{2,5}"); // en az 2 tane olduğu için fonksiyon çalışabilir, tekrarlananların tümünü aldı
+            var result16 = text7.match(exp12); 
+            document.write(result16 + "<br />");  // eeee
+
+
+            document.write("<h4> + </h4>");
+            // +
+            // düzenli ifade dahilinde kontrol eilecek olan değişken içeriği karakter dizilimde bulunan değerin 1 defa ya da daha fazla tekrarlanmış olması gerektiğini belirtmek için kullanılır
+
+            document.write(text7 + "<br />"); // HeEyeeee
+
+            var exp13 = new RegExp("e+", "gi"); 
+            var result17 = text7.match(exp13);  // return value is array
+            document.write(result17 + "<br />");  // eE,eeee
+
+
+            document.write("<h4> ? </h4>");
+            // ?
+            // düzenli ifade dahilinde kontrol eilecek olan değişken içeriği karakter dizilimde bulunan değerin 0 defa ya da 1 defa tekrarlanmış olması gerektiğini belirtmek için kullanılır
+            
+            document.write(text7 + "<br />"); // HeEyeeee
+
+            var exp14 = new RegExp("ee?", "gi"); 
+            var result18 = text7.match(exp14);  
+            document.write(result18 + "<br />"); // eE,ee,ee
+
+            var exp15 = new RegExp("y?", "gi"); 
+            var result19 = text7.match(exp15);  
+            document.write(result19 + "<br />");  // ,,,y,,,,,
+
+
+            document.write("<h4> * </h4>");
+            // *
+            // düzenli ifade dahilinde kontrol eilecek olan değişken içeriği karakter dizilimde bulunan değerin 0 defa ya da daha fazla tekrarlanmış olması gerektiğini belirtmek için kullanılır
+        
+            document.write(text7 + "<br />"); // HeEyeeee
+
+            var exp16 = new RegExp("ee*", "gi"); 
+            var result20 = text7.match(exp16);  
+            document.write(result20 + "<br />"); // eE,eeee
+
+            var exp17 = new RegExp("y*", "gi"); 
+            var result21 = text7.match(exp17);  
+            document.write(result21 + "<br />");  // ,,,y,,,,,
+
+            var exp18 = new RegExp("z*", "gi"); 
+            var result22 = text7.match(exp18);  
+            document.write(result22 + "<br />");  // ,,,,,,,,
+
+
+
+            document.write("<h3>özel belirleyiciler</h3>");
+
+            document.write("<h4> () </h4>");
+            // ()
+            // düzenli ifadelerde grup tanımlamak için kullanılır.
+
+            document.write(text + "<br />"); // Hi Felix, Hello Rai!!!
+            
+            var exp19 = new RegExp("(Rai|felix)", "gim")  // Rai veya felix patternleri
+            var result23 = text.match(exp19);
+            
+            document.write(result23 + "<br />"); // Felix,Rai
+
+            // var exp20 = new RegExp("(F)(e)(i)(X)", "gim")        // null
+            // var exp20 = new RegExp("(F)(e)(L)(i)(X)", "gim")     // Felix
+            // var exp20 = new RegExp("(F)(e)(l)(i)(x)")            // Felix,F,e,l,i,x
+            var exp20 = new RegExp("(F)(e)(i)(x)")                  // null
+            var result24 = text.match(exp20); 
+            
+            document.write(result24 + "<br />");  
+
+
+            document.write("<h4> \\ </h4>");
+            // \
+            // escape operator and also can be identifier for a special character
+            // düzenli ifadelerde ardından gelecek olan karakterin özel bir karakter olup olmadığını belirtmek için kullanılır.
+
+            document.write(text2 + "<br />");
+
+            var exp21 = /\s/g; // boşluk karakteri belirteci
+            // /s/ s karakteri aranacaktı 
+            // /\s/ \s belirtecini-özel karakterini arar
+            var result25 = text2.search(exp21);  // 5
+            document.write(result25 + "<br />");  
+
+            var exp22 = new RegExp("\S") 
+            var result26 = text2.match(exp22);  
+            document.write(result26 + "<br />");  // null
+
+            var exp23 = new RegExp("\\S", "g") 
+            var result27 = text2.match(exp23);  
+            document.write(result27 + "<br />");  // F,e,l,i,x,D,u,p,a,i,n
+            // RegExp içinde özel karakterleri kullanırken iki kez escape kullanılmalı \\
+
+            document.write("<h4> (?:x) </h4>");
+            // (?:x)
+            // düzenli ifadelerde alt grup oluşturmak için kullanılır
+            // çok sık kullanılmaz () belirleyicisi grup oluşturmak için yeterli
+            // fakat bu belirleyici ile çalışıldığında hafızada yer kaplanmaz tabi aynı zamanda daha sonra belirleyicinin değerlerine daha sonradan ulaşılamaz
+
+            document.write(text2 + "<br />");
+
+            var exp23 = new RegExp("(?:ix)") 
+            var result27 = text2.match(exp23);  
+            document.write(result27 + "<br />");  // ix
+
+
+            document.write("<h4> [abc] </h4>");
+            // [abc]
+            // düzenli ifade dahilinde kontrol edilecek olan değişken içeriği karakter diziliminde bulunan değerin belirtilen karakterlerden herhangi birisiyle, eşleşmesi gerektiğini belirtmek için kullanılır.
+
+            document.write(text2 + "<br />");
+
+            var exp24 = new RegExp("[DFixH]", "g"); // her bir değer bir karakter olarak aranıyor
+            var result28 = text2.match(exp24);  
+            document.write(result28 + "<br />");  // F,i,x,D,i
+            // g modifier yokken sadece F, bir tane bulduktan sonra duruyor   
+
+
+            document.write("<h4> [x-y] </h4>");
+            // [x-y]
+            // düzenli ifade dahilinde kontrol edilecek olan değişken içeriği karakter diziliminde bulunan değerin, belirtilen karakter aralığından herhangi birisi ile eşleşmesi gerektiğini belirtmek için kullanılır
+
+            text8 = "aysenurtak 2000"
+            document.write(text8 + "<br />");
+
+            // var exp25 = new RegExp("[a-z]", "g");  //a,y,s,e,n,u,r,t,a,k
+            var exp25 = new RegExp("([a-z]|[0-9])", "g");  // a,y,s,e,n,u,r,t,a,k,2,0,0,0
+            
+            // her bir değer bir karakter olarak aranıyor
+            // a-z türkçe karakter aranmaz eklemek için [a-zçıüöğ]
+
+            var result29 = text8.match(exp25);  
+            document.write(result29 + "<br />");  // 
+            // g modifier yokken sadece F, bir tane bulduktan sonra duruyor   
+
+            email = "aysenurtak1@gmail.com"
+            var email_regex = new RegExp("[a-z][0-9]@gmail.com","g")
+            document.write(email.match(email_regex)); // k1@gmail.com
+
+
+            document.write("<h4> [^abc] </h4>");
+            // [^abc]
+            // belirtilen karakterler dışında diğer karakterler ile eşleşme aranıyor
+            document.write(text2 + "<br />");
+
+            var exp26 = new RegExp("[^ixFel]", "g"); 
+            var result30 = text2.match(exp26);  
+            document.write(result30 + "<br />");  // ,D,u,p,a,n
+
+
+            document.write("<h4> [^x-y] </h4>");
+            // [^x-y]
+            // belirtilen karakter aralığı dışındaki karakterler ile eşleşme sağlanmalı
+            document.write(text8 + "<br />");
+
+            var exp27 = new RegExp("[^a-z]", "g");
+            var result31 = text8.match(exp27);
+            document.write(result31 + "<br />"); // ,2,0,0,0
+            // g olmayınca sadece " " yazıdırılıyor
+
+
+            document.write("<h4> (x|y) </h4>");
+            // (x|y)
+            // bunu yukarıda denemiştik
+            // düzenli ifade dahilinde kontrol edilecek olan değişken içeriği karakter diziliminde bulunan değerin belirtilen x ya da y karakterlerinden herhangi birisiyle eşleşmesi gerektiğini belirtmek için kullanılır
+            // new RegExp("(Vol|Ha)kan") Volkan ya da Hakan değerleri aranacak
+
+            document.write("<h4> . </h4>");
+            // .
+            // düzenli ifade dahilinde kontrol edilecek olan değişken içeriği karakter diziliminde bulunan değerin \n (yeni satır) karakteri hariç herhangi birisiyle eşleşmesi gerektiğini belirtmek için kullanılır
+
+            var text9 = "ba be bi bu bo";
+            document.write(text9 + "<br />"); // ba be bi bu bo"
+            
+            var exp28 = new RegExp("b.", "g");
+            var result32 = text9.match(exp28);
+
+            document.write(result32 + "<br />"); // ba,be,bi,bu,bo
+            // x.+y -> x ile başlayacak sayısız karakter olabilir t ile bitecek
+
+
+            document.write("<h3> özel belirteçler </h3>");
+
+            // \w : düzenli ifade dahilinde kontrol edilecek olan değişken içeriği karakter diziliminde bulunan değerin
+            //      harf, rakam, veya _ karakterlerinden herhangi birisiyle eşleşmesi gerektiğin belirtmek için kullanılır
+            // sadece harf rakam _ içeren içeriklerde kullanılabilir
+
+            // \W : düzenli ifade dahilinde kontrol edilecek olan değişken içeriği karakter diziliminde bulunan değerin
+            //      harf, rakam, veya _ karakterleri dışındaki karakterlerden herhangi birisiyle eşleşmesi gerektiğin belirtmek için kullanılır
+            // ^ sadece harf rakam _ 
+            // içerikte özel karakter var mı kontrolünde kullanılır
+
+            // \d : düzenli ifade dahilinde kontrol edilecek olan değişken içeriği karakter diziliminde bulunan değerin
+            //      sadece rakam karakterleri eşleşmesi gerektiğin belirtmek için kullanılır
+
+            // \D : düzenli ifade dahilinde kontrol edilecek olan değişken içeriği karakter diziliminde bulunan değerin
+            //      rakam karakterleri dışındaki karakterler ile eşleşmesi gerektiğini belirtmek için kullanır
+            
+            // \s : düzenli ifade dahilinde kontrol edilecek olan değişken içeriği karakter diziliminde bulunan değerin
+            //      sadece boşluk karakteri ile eşleşmesi gerektiğini belirtmek için kullanılır
+
+            // \S : düzenli ifade dahilinde kontrol edilecek olan değişken içeriği karakter diziliminde bulunan değerin
+            //      boşluk karakteri dışındaki karakterlerden herhangi birisi ile eşleşme sağlamak için kullanılır
+
+            // \0 : düzenli ifade dahilinde kontrol edilecek olan değişken içeriği karakter diziliminde bulunan değerin
+            //      sadece Null karakteri ile eşleşmesi gerektiğini belirtiyor
+            // 16 bit null değeri : \u0000, "\u0000"
+
+            // \f : düzenli ifade dahilinde kontrol edilecek olan değişken içeriği karakter diziliminde bulunan değerin
+            //      sadece form besleme karakteri ile eşleşmesi gerektiğini belirtmek için kullanılır
+            // 16 bit form besleme karakteri : \u000C     
+            
+            // \n : düzenli ifade dahilinde kontrol edilecek olan değişken içeriği karakter diziliminde bulunan değerin
+            //      sadece yeni satır (\n) karakteri ile eşleşmesi gerektiğini belirtir.
+            // 16 bit new line karakteri : \u000A     
+            
+            // \r : düzenli ifade dahilinde kontrol edilecek olan değişken içeriği karakter diziliminde bulunan değerin
+            //      sadece paragraf sonu karakteri (\r) ile eşleşmesi gerektiğini belirtir.
+            // 16 bit \r karakteri : \u000D
+
+            // \t : düzenli ifade dahilinde kontrol edilecek olan değişken içeriği karakter diziliminde bulunan değerin
+            //      sadece tab karakteri (\t) (yatay sekme karakteri) ile eşleşmesi gerektiğini belirtir.
+            // 16 bit \t karakteri : \u0009
+
+            // \v : düzenli ifade dahilinde kontrol edilecek olan değişken içeriği karakter diziliminde bulunan değerin
+            //      sadece dikey sekme (vertical tab) karakteri (\v) ile eşleşmesi gerektiğini belirtir.
+            // 16 bit \v karakteri : \u000B    
+
+            // bu tür veriler veri çekme sırasında 16 bit olarak gelebilir ve bunların kontrolünün yapılması gerekebilir    
+
+            // \xxx : düzenli ifade dahilinde kontrol edilecek olan değişken içeriği karakter diziliminde bulunan değerin
+            //        octal numeral system tabanında ASCII karşılığı olan karakteri ile eşleşmesi gerektiğini belirtmek için kullanılır
+            // \000 - \377'e kadar değer alabilir
+            var text10 = "\166\157\154\153\141\156"; // volkan
+            var exp29 = new RegExp("n");
+            document.write(text10 + "<br />");
+            document.write(exp29.test(text10)); // true 
+        
+            // \xXX : düzenli ifade dahilinde kontrol edilecek olan değişken içeriği karakter diziliminde bulunan değerin
+            //        hexadecimal numeral system tabanında ASCII karşılığı olan karakteri ile eşleşmesi gerektiğini belirtmek için kullanılır
+            // \x00 - \xFF
+
+            // \uXXXX : düzenli ifade dahilinde kontrol edilecek olan değişken içeriği karakter diziliminde bulunan değerin
+            //      16-bit unicode formatındaki karşılığı olan karakteri ile eşleşmesi gerektiğini belirtmek için kullanılır
+            // \u0000 - \uFFFF
+
+        </script>
+        <br />
+    </body>
+</html>

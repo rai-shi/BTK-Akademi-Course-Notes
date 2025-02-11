@@ -1,0 +1,17 @@
+table{
+    width: 100%;
+    border-width: 8px;
+    border-color: rgb(39, 110, 116);
+    border-radius: 5px;
+    border-style: solid;
+}
+td{
+    border: rgb(59, 138, 228);
+    border-style: double;
+    color: rgb(158, 49, 94);
+}
+#last-row{
+    color: #000;
+    font-weight: bold;
+    background-color: burlywood;
+}

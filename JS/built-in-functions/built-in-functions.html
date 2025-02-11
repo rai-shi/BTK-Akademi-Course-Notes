@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Built In Methods</title>
+    </head>
+    <body>
+        <script type="text/javascript" language="javascript">
+            
+            // eval() : Evaluates JavaScript code represented as a string.
+            // so like a compiler, it compiles the code and runs it.
+            // eval() is not recommended to use because of security reasons and performance reason.
+            // kendisine parametre olarak verilen verileri JavaScript kodu olarak değerlendirir ve çalıştırır.
+            document.write("<h2>eval() method</h2>");
+
+            var exp1 = 10;
+            var exp2 = 20;
+
+            var result  = eval("exp1 + exp2");
+            document.write("Result of eval() : " + result + "<br />"); // 30
+           
+            function sum(a, b) {
+                return a + b;
+            }
+            var command = "sum(10, 20)";
+            var result2 = eval(command);
+            document.write("Result of eval() with function : " + result2 + "<br />"); // 30
+            
+
+
+
+            // trim() : Removes whitespace from both ends of a string.
+            // Removes the leading and trailing white spaces from a string.            
+            document.write("<h2>trim() method</h2>");
+
+            var exp3    =   "hey there!";
+            var exp4    =   "   Hello World!   ";
+            var exp5    =   "byee!";
+            document.write("<pre>" + "texts before trim " + exp3 + exp4 + exp5 +  "</pre>" +"<br />");
+
+            exp3 = exp3.trim();
+            document.write("<pre>" + "texts after trim " + exp3 + exp4 + exp5 +  "</pre>" +"<br />");
+
+
+
+            // slice(start index, end index)
+            // Returns the selected elements in an array, as a new array object.
+            // slice() method selects the elements starting at the given start argument, and ends at, but does not include, the given end argument.
+            // kendi üzerinde çalıştığı stringin belirtilen indexler arasındaki kısmını alır ve geri döndürür.           
+            document.write("<h2>slice() method</h2>");
+
+            var exp6    =   "Hello World!";
+            document.write("Text before slice : " + exp6 + "<br />"); // Hello World!
+            var result3 =   exp6.slice(6, 11);
+            document.write("Text after slice(6,11) : " + result3 + "<br />"); // World!
+            var result4 =   exp6.slice(2);
+            document.write("Text after slice(2) : " + result4 + "<br />"); // llo World!
+            var result5 =   exp6.slice(-2);
+            document.write("Text after slice(-2) : " + result5 + "<br />"); // d!
+            var result6 =   exp6.slice(-5, -2);
+            document.write("Text after slice(-5, -2) : " + result6 + "<br />"); // orl
+
+
+
+            // substring(start index, end index)
+            // Returns the selected elements in an array, as a new array object.
+            // substring() is similar to slice(). The difference is that substring() cannot accept negative indexes.            
+            document.write("<h2>substring() method</h2>");
+
+            var exp7    =   "Hello World!";
+            document.write("Text before substring : " + exp7 + "<br />"); // Hello World!
+            var result8 =   exp7.substring(6, 11);
+            document.write("Text after substring(6,11) : " + result8 + "<br />"); // World!
+            var result9 =   exp7.substring(2);
+            document.write("Text after substring(2) : " + result9 + "<br />"); // llo World!
+            var result10 =  exp7.substring(-2);
+            document.write("Text after substring(-2) : " + result10 + "<br />"); // Hello World!
+            var result11 =  exp7.substring(11,6); // javascript will swap the indexes to 6, 11
+            document.write("Text after substring(11,6) : " + result11 + "<br />"); // World!
+
+
+
+            // substr(start index, length)
+            // Returns the selected elements in an array, as a new array object.
+            // substr() is similar to slice(). The difference is that the second parameter specifies the length of the extracted part.            
+            document.write("<h2>substr() method</h2>");
+
+            var exp12   =   "Hello World!";
+            document.write("Text before substr : " + exp12 + "<br />"); // Hello World!
+            var result13 =  exp12.substr(6, 5);
+            document.write("Text after substr(6,5) : " + result13 + "<br />"); // World, start with index 6 and get 5 characters
+            var result14 =  exp12.substr(2);
+            document.write("Text after substr(2) : " + result14 + "<br />"); // llo World! , starts with index 2 to and because of no length parameter, it gets all the characters
+            var result15 =  exp12.substr(-2);
+            document.write("Text after substr(-2) : " + result15 + "<br />"); // d!, same as right before example
+            // another difference between substr() and slice() is that substr() can accept negative indexes as well.
+            var result16 =  exp12.substr(-5, 2);
+            document.write("Text after substr(-5, 2) : " + result16 + "<br />"); // Wo, starts with index -5 and gets 2 characters
+
+
+
+            // concat()
+            // Joins two or more strings.
+            document.write("<h2>concat() method</h2>");
+
+            var exp17 = "Hello";
+            var exp18 = "World!";
+            var result19 = exp17.concat(" ", exp18);
+            document.write("Text after concat : " + result19 + "<br />"); // Hello World!
+
+
+
+            // repeat()
+            // Returns a new string with a specified number of copies of an existing string.            
+            document.write("<h2>repeat() method</h2>");
+
+            var exp20 = "Hello";
+            var result21 = exp20.repeat(3);
+            document.write("Text after 3 repeat : " + result21 + "<br />"); // HelloHelloHello
+            var result22 = exp20.repeat("3");
+            document.write("Text after \"3\" repeat : " + result22 + "<br />"); // NaN
+            var result23 = exp20.repeat(0);
+            document.write("Text after 0 repeat : " + result23 + "<br />"); // ""
+
+
+
+            // toString()
+            // Returns the variable content as a string.
+            document.write("<h2>toString() method</h2>");
+            
+            var exp24 = 10;
+            var result25 = exp24.toString();
+            document.write("type of exp24: " +typeof(exp24)+ "   and type of result25 after toString method: "+  typeof(result25) + "<br />"); // number and string
+
+
+
+            // String()
+            // Returns the variable content to String data types. String object is a wrapper around a primitive data type.            
+            document.write("<h2>String() method</h2>");
+
+
+            var _true   =   new Boolean(true);
+            var _array  =   new Array(1,2,3);
+            var _object =   new Object();
+            var _date   =   new Date();
+            var _number =   new Number(10);
+
+            document.write("<br />");
+            document.write(" _true: "       +   typeof(_true)   + " : " +   _true   +   "<br />"+   // true object
+                            " _array: "     +   typeof(_array)  + " : " +   _array  +   "<br />"+   // 1,2,3 object
+                            " _object: "    +   typeof(_object) + " : " +   _object +   "<br />"+   // [object Object] object
+                            " _date: "      +   typeof(_date)   + " : " +   _date   +   "<br />"+   // Sun Nov 17 2024 15:40:01 GMT+0300 (GMT+03:00) object
+                            " _number: "    +   typeof(_number) + " : " +   _number +   "<br />");  // 10 object
+
+            var _true_str   =   String(_true);
+            var _array_str  =   String(_array);
+            var _object_str =   String(_object);
+            var _date_str   =   String(_date);
+            var _number_str =   String(_number);
+
+            document.write("<br />");
+            document.write("after String() method, all of the variable are: <br />");
+            document.write(" _true: "       + typeof(_true_str)     + " : " +   _true_str   +   "<br />"+   // true string
+                            " _array: "     + typeof(_array_str)    + " : " +   _array_str  +   "<br />"+   // 1,2,3 string
+                            " _object: "    + typeof(_object_str)   + " : " +   _object_str +   "<br />"+   // [object Object] string
+                            " _date: "      + typeof(_date_str)     + " : " +   _date_str   +   "<br />"+   // Sun Nov 17 2024 15:40:01 GMT+0300 (GMT+03:00) string
+                            " _number: "    + typeof(_number_str)   + " : " +   _number_str +   "<br />");  // 10 string
+           
+           
+
+            // Number()
+            // Returns the variable content to Number data types. Number object is a wrapper around a primitive data type.
+            document.write("<h2>Number() method</h2>");
+
+            var _true2      =   Boolean(true);
+            var _array2     =   Array(1,2,3);
+            var _object2    =   Object();
+            var _date2      =   new Date();
+            var _string     =   String("10");
+            var _float      =   10.5;
+
+            document.write("<br />");
+            document.write( "_true2 "   +   typeof(_true2)      + " : " +   _true2      + "<br />" +    // true boolean
+                            "_array2 "  +   typeof(_array2)     + " : " +   _array2     + "<br />" +    // 1,2,3  object
+                            "_object2 " +   typeof(_object2)    + " : " +   _object2    + "<br />" +    // [object Object] object
+                            "_date2 "   +   typeof(_date2)      + " : " +   _date2      + "<br />" +    // Sun Nov 17 2024 15:40:01 GMT+0300 (GMT+03:00) object
+                            "_string "  +   typeof(_string)     + " : " +   _string     + "<br />" +    // 10 string
+                            "_float "   +   typeof(_float)      + " : " +   _float      + "<br />");    // 10.5 number
+            
+            var _true2_num      = Number(_true2);
+            var _array2_num     = Number(_array2);
+            var _object2_num    = Number(_object2);
+            var _date2_num      = Number(_date2);
+            var _string_num     = Number(_string);
+            var _float_num      = Number(_float);
+
+            document.write("<br />");
+            document.write("after Number() method, all of the variable are: <br />");
+            document.write( "_true2 "   +   typeof(_true2_num)      + " : " +   _true2_num      + "<br />" +    // 1 number
+                            "_array2 "  +   typeof(_array2_num)     + " : " +   _array2_num     + "<br />" +    // NaN  number
+                            "_object2 " +   typeof(_object2_num)    + " : " +   _object2_num    + "<br />" +    // NaN number
+                            "_date2 "   +   typeof(_date2_num)      + " : " +   _date2_num      + "<br />" +    // 1637151601000 (time stamp) number
+                            "_string "  +   typeof(_string_num)     + " : " +   _string_num     + "<br />" +    // 10 number
+                            "_float "   +   typeof(_float_num)      + " : " +   _float_num      + "<br />");    // 10.5 number
+
+            // how to check if a variable is a NaN
+            document.write("<br />");
+            document.write("NaN check: <br />");
+            document.write("isNaN(_true2_num): " + isNaN(_true2_num) + "<br />"); // false
+            document.write("isNaN(_array2_num): " + isNaN(_array2_num) + "<br />"); // true
+
+
+
+            // ValueOf()
+            // Üzerinde çalışılan değişken değerinin tam anlamıyla aktarımını sağlayarak yeni bir içerik oluşturur.
+            // Returns the primitive value of the specified object.
+            // content and data type will be the same as the original variable.
+            // ne gerek var?
+            document.write("<h2>valueOf() method</h2>");
+
+            var _true3      =   Boolean(true);
+            var result26    =   _true3.valueOf();
+            document.write("type of _true3: " + typeof(_true3) + "   and type of result26 after valueOf method: "+  typeof(result26) + "<br />"); // object and boolean
+            document.write("_true3 "     +   _true2      + " : " +   typeof _true3     + "<br />"); // true : boolean
+            document.write("result26 "   +   result26    + " : " +   typeof result26   + "<br />"); // true : boolean
+
+
+
+            // IndexOf()
+            // Returns the position of the first found occurrence of a specified value in a string.
+            document.write("<h2>indexOf() method</h2>");
+
+            var exp27 = "Hello World!";
+            var result28 = exp27.indexOf("World");
+            document.write("Index of World in Hello World! : " + result28 + "<br />"); // 6
+            var result29 = exp27.indexOf("Hey");
+            document.write("Index of Hey in Hello World! : " + result29 + "<br />"); // -1, because it is not found
+            var result30 = exp27.indexOf("l", 4); // it will search the "l" character from index 4
+            document.write("Index of l in Hello World! from index 4 : " + result30 + "<br />"); // 9
+
+
+
+            // lastIndexOf()
+            // Returns the position of the last found occurrence of a specified value in a string.
+            document.write("<h2>lastIndexOf() method</h2>");
+
+            var exp31 = "Hello World!";
+            var result32 = exp31.lastIndexOf("o");
+            document.write("Last Index of o in Hello World! : " + result32 + "<br />"); // 7
+            var result33 = exp31.lastIndexOf("Hey");
+            document.write("Last Index of Hey in Hello World! : " + result33 + "<br />"); // -1, because it is not found
+            var result34 = exp31.lastIndexOf("l", 4); // it will search the "l" character until the index 4
+            document.write("Last Index of l in Hello World! from index 4 : " + result34 + "<br />"); // 3
+
+
+
+            // search()
+            // Searches a string for a specified value and returns the position of the match.
+            // can get regular expressions as a parameter.
+            document.write("<h2>search() method</h2>");
+
+            var exp35 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus scelerisque dui sed neque placerat elementum. Sed vel sodales dolor, non.";
+            var result36 = exp35.search("dolor");
+            document.write("Search dolor in Lorem Ipsum : " + result36 + "<br />"); // 12
+            var result37 = exp35.search("Hey");
+            document.write("Search Hey in Lorem Ipsum : " + result37 + "<br />"); // -1, because it is not found
+            var result38 = exp35.search(/NEQ/i); // regular expression, i means case insensitive
+            document.write("Search /NEQ/i in Lorem Ipsum : " + result38 + "<br />"); // 85
+
+
+
+            // includes()
+            // Checks if a string contains the specified value. Returns boolean result.
+            document.write("<h2>includes() method</h2>");
+
+            var exp39 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus scelerisque dui sed neque placerat elementum. Sed vel sodales dolor, non.";
+            var result40 = exp39.includes("non");
+            document.write("Includes non in Lorem Ipsum : " + result40 + "<br />"); // true
+
+        
+
+            // startsWith()
+            // Checks if a string begins with specified value. Returns boolean result.
+            document.write("<h2>startsWith() method</h2>");
+
+            var exp40 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus scelerisque dui sed neque placerat elementum. Sed vel sodales dolor, non.";
+            var result41 = exp40.startsWith("Lorem");
+            document.write("If Lorem Ipsum starts with Lorem : " + result41 + "<br />"); // true
+
+
+
+            // endsWith()
+            // Checks if a string ends with specified value. Returns boolean result.
+            document.write("<h2>endsWith() method</h2>");
+
+            var exp41 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+            var result42 = exp41.endsWith("amet.");
+            document.write("If Lorem Ipsum ends with amet. : " + result42 + "<br />"); // false
+
+
+
+            // match()
+            // Searches a string for a match against a regular expression, and returns the matches. case sensitive.
+            // kendisine parametre olarak verilen değer doğrultusunda değişken içeriğini kontrol eder ve eşleşen değer varsa içeriğin eşleşen kısmından oluşan bir dizi döndürür.
+            document.write("<h2>match() method</h2>");
+
+            var exp43 = "raishi1@gmail.com";
+            // regex struct for email
+            // @[a-zA-Z0-9. -]+
+            // ^[^@]+@[^@]+\.[^@]+$
+            var result44 = exp43.match(/^[^@]+@[^@]+\.[^@]+$/);
+            document.write("is this a valid email? : " + result44 + "<br />"); // raishi1@gmail.com
+            
+            var result45 = exp43.match("1@");
+            document.write("is there a 1@ in the email? : " + result45 + "<br />"); // 1@
+
+            var exp44 = "raishi1@gmail.com1@2@";
+            var result46 = exp44.match(/1@/g);
+            document.write("is there a 1@ in the text? : " + result46 + "<br />"); // 1@,1@
+
+            // g means global, it will search all the matches in the text.
+            // i means case insensitive
+
+
+
+            // replace(changed value, new value)
+            // Searches a string for a specified value, or a regular expression, and returns a new string where the specified values are replaced.
+            // regex accepted.
+            document.write("<h2>replace() method</h2>");
+
+            var exp45 = "Hello World!";
+            var result47 = exp45.replace("World", "Universe");
+            document.write("Replace World with Universe in Hello World! : " + result47 + "<br />"); // Hello Universe!
+
+            var exp46 = "Python PYTHON PyTHon PytHon";
+            var result48 = exp46.replace(/python/ig, "JavaScript");
+            document.write("Replace python with JavaScript in Python PYTHON PyTHon PytHon : " + result48 + "<br />"); // JavaScript JavaScript JavaScript JavaScript
+
+
+            // split()
+            // Splits a string into an array of substrings.
+            // default separator is comma.
+            document.write("<h2>split() method</h2>");
+
+            var exp47 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+            var result49 = exp47.split(" "); 
+            document.write("Split the text with space : " + result49 + "<br />"); // Lorem,ipsum,dolor,sit,amet,,consectetur,adipiscing,elit.
+            document.write(typeof result49 + "<br />"); // object
+            for (var i = 0; i < result49.length; i++) {
+                document.write(result49[i] + "<br />");
+            }
+
+            var result50 = exp47.split(" ", 3);
+            document.write("Split the text with space and get 3 elements : " + result50 + "<br />"); // Lorem,ipsum,dolor
+
+
+
+            // localeCompare()
+            // Compares two strings in the current locale.
+            // Comperes in browser's language.
+            // Runs in unicode.
+            // Returns a number indicating whether a reference string comes before or after or is the same as the given string in sort order.
+            // -1 : if the reference string is sorted before the given string
+            // 0 : if the two strings are equal
+            // 1 : if the reference string is sorted after the given string
+            document.write("<h2>localeCompare() method</h2>");
+
+            var exp48 = "abc";
+            var exp49 = "abd";
+            var result51 = exp48.localeCompare(exp49);
+            document.write("Compare abc and abd : " + result51 + "<br />"); // -1 -> abc < abd
+
+            var exp50 = "b";
+            var exp51 = "a";
+            var result52 = exp50.localeCompare(exp51);
+            document.write("Compare b and a : " + result52 + "<br />"); // 1 -> b > a
+
+            var exp52 = "a";
+            var result53 = exp52.localeCompare(exp51);
+            document.write("Compare a and a : " + result53 + "<br />"); // 0 -> a = a
+
+
+
+            // CharAt()
+            // Returns the character at the specified index (position) in a string.
+            document.write("<h2>charAt() method</h2>");
+
+            var exp53 = "Hello World!";
+            var result54 = exp53.charAt(6);
+            document.write("Character at index 6 in Hello World! : " + result54 + "<br />"); // W
+
+
+
+            // charCodeAt()
+            // Returns the Unicode of the character at the specified index in a string.
+            // Unicodes are the numbers that represent the characters. They are in decimal.
+            document.write("<h2>charCodeAt() method</h2>");
+
+            var exp55 = "Hello World!";
+            var result56 = exp55.charCodeAt(6);
+            document.write("Unicode of the character at index 6 in Hello World! : " + result56 + "<br />"); // 87
+
+
+
+            // fromCharCode()
+            // Converts given Unicode values to characters.
+            // Can take multiple parameters.
+            document.write("<h2>fromCharCode() method</h2>");
+
+            var result57 = String.fromCharCode(105);
+            document.write("Character of Unicode 105 : " + result57 + "<br />"); // i
+
+            var result58 = String.fromCharCode(105, 63, 45);
+            document.write("Character of Unicode 105 : " + result58 + "<br />"); // i?-
+
+
+
+            // aşağıdaki fonksiyonlar API'lerde çok kullanılır.
+
+            // encodeURI()
+            // Encodes a URI.
+            // Encodes special characters, except: - , / ? : ; ~ " _ . ! * ' ( ) @ & = + $ #, numbers, lowercase and uppercase chars
+            // Değişken içerisindeki metnin özel karakterlerini UTF-8 kodlamasına dönüştürerek oluşturduğu değeri geriye döndürür.
+            document.write("<h2>encodeURI() method</h2>");
+
+            var exp56 = "https://www.google.com/search?q=javascript";
+            var result59 = encodeURI(exp56); // there is no changing because all of the characters are in encoding exeption
+            document.write("Encoded URI : " + result59 + "<br />"); // https://www.google.com/search?q=javascript
+            
+            var exp57 = "https://www.google.com/search?q=çerezliği";
+            var result60 = encodeURI(exp57);
+            document.write("Encoded URI : " + result60 + "<br />"); // https://www.google.com/search?q=%C3%A7erezli%C4%9Fi 
+
+
+
+            // decodeURI()
+            // Decodes a URI.
+            document.write("<h2>decodeURI() method</h2>");
+
+            var exp58 = "https://www.google.com/search?q=%C3%A7erezli%C4%9Fi";
+            var result61 = decodeURI(exp58);
+            document.write("Encoded URI : " + result61 + "<br />"); // https://www.google.com/search?q=çerezliği
+
+
+
+            // encodeURIComponent()
+            // değişken içerisindeki metnin özel karakterlerini UTF-8 kodlamasına dönüştürerek oluşturduğu değeri geriye döndürür.
+            // Encodes special characters, except: - ~ " _ . ! * ' ( ), numbers, lowercase and uppercase chars
+            // encodeURI den daha fazla gelişmiş çünkü daha fazla karakteri kodlamaya dahil ediyor.
+            document.write("<h2>encodeURIComponent() method</h2>");
+
+            var exp59 = "https://www.google.com/search?q=çerezliği";
+            var result62 = encodeURIComponent(exp59); // there is no changing because all of the characters are in encoding exeption
+            document.write("Encoded URI : " + result62 + "<br />"); // https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3D%C3%A7erezli%C4%9Fi            
+
+
+
+            // decodeURIComponent()
+            // Decode a URI. 
+            // Includes more character.
+            document.write("<h2>decodeURIComponent() method</h2>");
+
+            var exp60 = "https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3D%C3%A7erezli%C4%9Fi";
+            var result63 = decodeURIComponent(exp60); // there is no changing because all of the characters are in encoding exeption
+            document.write("Encoded URI : " + result63 + "<br />"); //  https://www.google.com/search?q=çerezliği        
+
+
+
+            // escape()
+            // Değişken içerisindeki metnin özel karakterlerini Unicode kodlamasına dönüştürerek oluşturduğu değeri geriye döndürür.
+            // exeptions: numbers, A-Z, a-z, @ -_ . * + /
+            document.write("<h2>escape() method</h2>");
+
+            var exp61 = "Javascript Eğitim Seti";
+            var result64 = escape(exp61);
+            document.write("Escaped text : " + result64 + "<br />"); // Javascript%20E%u011Fitim%20Seti
+
+
+
+            // unescape()
+            document.write("<h2>unescape() method</h2>");
+
+            var exp62 = "Javascript%20E%u011Fitim%20Seti";
+            var result65 = unescape(exp62);
+            document.write("Escaped text : " + result65 + "<br />"); // Javascript Eğitim Seti
+            // şifrelemede, URL düzenlemede, botlardan gelen unicodeların çözümlenmesinde kullanılabilir
+
+
+
+            // toUpperCase()
+            // Turn all characters in the text to upper case. 
+            document.write("<h2>toUpperCase() method</h2>");
+
+            var exp63 = "hello world!";
+            var result66 = exp63.toUpperCase();
+            document.write("Upper cased text : " + result66 + "<br />"); // HELLO WORLD!
+            
+    
+
+            // toLowerCase()
+            document.write("<h2>toUpperCase() method</h2>");
+
+            var exp64 = "HELLO WORLD!";
+            var result67 = exp64.toLowerCase();
+            document.write("Upper cased text : " + result67 + "<br />"); // HELLO WORLD!
+
+
+
+            // toLocaleUpperCase()
+            // Same as with toUpperCase(), but it works with more relaible because browser location-language is considered.
+            document.write("<h2>toLocaleUpperCase() method</h2>");
+
+            var exp65 = "çşğüö";
+            var result68 = exp65.toLocaleUpperCase()
+            document.write("Upper cased text : " + result68 + "<br />"); // ÇŞĞÜÖ
+
+
+
+            // toLocaleLowerCase()
+            // Same as with toLowerCase(), but it works with more relaible because browser location-language is considered.
+            document.write("<h2>toLocaleLowerCase() method</h2>");
+
+            var exp66 = "ÇŞĞÜÖ";
+            var result69 = exp65.toLocaleLowerCase()
+            document.write("Lower cased text : " + result69 + "<br />"); // çşğüö
+
+
+
+            // sub()
+            // Değişken içerisindeki metni alt simge metni yaparak geriye döndürür.
+            document.write("<h2>sub() method</h2>");
+
+            var exp67 = "H2O";
+            var result70 = exp67[0] + exp67[1].sub() + exp67[2];
+            document.write(exp67 + " is made sub : " + result70 + "<br />"); // çşğüö
+
+
+
+            // sup()
+            // Değişken içerisindeki metni üst simge metni yaparak geriye döndürür.
+            document.write("<h2>sup() method</h2>");
+
+            var exp68 = "x2";
+            var result71 = exp68[0] + exp68[1].sup();
+            document.write(exp68 + " is made sup : " + result71 + "<br />"); // çşğüö
+
+
+
+            // big()
+            // Return variable text font bigger
+            // There is default font value.
+            document.write("<h2>big() method</h2>");
+
+            var exp69 = "Hello World!";
+            var result72 = exp69.big()
+            document.write(exp69 + " with bigger font size: " + result72 + "<br />");
+
+
+
+            // small()
+            // Return variable text font smaller
+            // There is default font value.
+            document.write("<h2>small() method</h2>");
+
+            var exp70 = "Hello World!";
+            var result73 = exp70.small()
+            document.write(exp70 + " with smaller font size: " + result73 + "<br />");
+
+
+
+            // bold()
+            // Return variable text width bolder.
+            document.write("<h2>bold() method</h2>");
+
+            var exp71 = "Hello World!";
+            var result74 = exp71.bold()
+            document.write(exp71 + " with bolder font width: " + result74 + "<br />");
+
+
+
+            // italics()
+            // Return variable text italics.
+            document.write("<h2>italics() method</h2>");
+
+            var exp72 = "Hello World!";
+            var result75 = exp72.italics()
+            document.write(exp72 + " with italics font: " + result75 + "<br />");
+
+
+
+            // strike()
+            // üzeri çizilmiş metin geri döndürür
+            // ürünlerin fiyatlarını gösterirken örneğin indirimsiz-eski fiyatın üzeri çizili olur, bu şekilde yapabiliriz.
+            document.write("<h2>strike() method</h2>");
+
+            var exp73 = "Hello World!";
+            var result76 = exp73.strike()
+            document.write(exp73 + " with striked text: " + result76 + "<br />");
+
+
+
+            // fixed()
+            // metni teletype geri döndürür.
+            document.write("<h2>fixed() method</h2>");
+
+            var exp74 = "Hello World!";
+            var result77 = exp74.fixed()
+            document.write(exp74 + " with fixed text: " + result77 + "<br />");
+
+
+
+            // fontcolor()
+            // change the font color to given color
+            // take parameter as string
+            // default color is green
+            document.write("<h2>fontcolor() method</h2>");
+
+            var exp75 = "Hello World!";
+            var result78 = exp75.fontcolor("green"); // #5623489
+            document.write(exp75 + " changed text color to: " + result78 + "<br />");
+
+
+
+            // fontsize()
+            // kendisine verilen parametre doğrultusunda kendisine verilen metnin fontunu değiştirir.
+            // default value is the same as the calling string object
+            // the max value is 7, if you want to bigger font you can use CSS
+            // are they hx header font size
+            document.write("<h2>fontsize() method</h2>");
+
+            var exp76 = "Hello World!";
+            var result79 = exp76.fontsize(65); // 0 dene
+            document.write(exp76 + " changed text font size to: " + result79 + "<br />");
+
+
+
+            // anchor()
+            // değişkene <a> tagı tanımlıyor
+            // aynı zamanda <a> tagına name değeri de atar.
+            document.write("<h2>anchor() method</h2>");
+
+            var exp77 = "Hello World!";
+            var result80 = exp77.anchor("greeting"); 
+            document.write(exp77 + " anchored text : " + result80 + "<br />");
+
+
+
+            // link
+            // değişkene <a> tagı atıyor aynı zamanda link değeri de verebiliyorsun
+            // default href:undefined
+            document.write("<h2>link() method</h2>");
+
+            var exp78 = "Hello World!";
+            var result81 = exp78.link("http://www.google.com"); 
+            document.write(exp78 + " : " + result81 + "<br />");
+        </script>
+    </body>
+</html>

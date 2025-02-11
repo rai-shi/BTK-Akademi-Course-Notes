@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Control Structures</title>
+    </head>
+    <body>
+        <script type="text/javascript" language="javascript">
+            // if - else if - else
+            document.write("<h2> if - else if - else </h2> <br />");
+
+
+            var value1 = 10;
+            var value2 = 5;
+            var value3 = "8";
+
+            if(value1 < value2)
+            {
+                document.write(value1 + " < " + value2);
+            }
+            else if ((value1 > value2) && (value3 === "8"))
+            {
+                document.write(value1 + " > " + value2 + " and " + " value3 is " + typeof value3 + " '8'");
+            }
+            else
+            {
+                document.write(value1 + " = " + value2);
+            }
+
+            document.write("<br />");
+
+            // example 2
+            var value4 = true;
+
+            if ((value4>0) | (value4<=5))
+            {
+                document.write(value4 + "'s numeric equivalent is " + Number(value4));
+            }
+
+            document.write("<br />");
+
+
+            // switch case break default
+            /*
+            switch(condition){
+                case conditional control:
+                    ....
+                break;
+                case conditional control:
+                    ....
+                break;
+                default;
+            }
+            */
+            document.write("<h2> switch case </h2> <br />");
+
+            var text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam iaculis vitae odio at condimentum. Sed arcu ex, pulvinar ut aliquam vitae, luctus ut justo. Duis vestibulum mauris ligula, vel elementum.";
+            var charLength = text.length;
+
+            switch (charLength){
+                case 56:
+                    document.write("text length is 56");
+                break;
+                case 56:
+                    document.write("text length is 200");
+                break;
+                default:
+                    document.write("all the conditions are wrong, length is actually " + text.length);
+            }
+
+            document.write("<br />");
+
+
+            // ternary condition statement ? :
+            document.write("<h2> ternary condition </h2> <br />");
+
+            var value5 = (2<5) ? "less than" : "greater than";
+            document.write(value5)
+
+            document.write("<br />");
+
+            
+            // try catch finally throw error
+            // 5/0 -> Infinity
+            // 0/0 -> NaN
+            // throw occurs exception. it's important that where throw statement is written. because throw will create an error and other codes below throw statement will not work.
+            document.write("<h2> try catch </h2> <br />");
+            try{
+                var name = "raishi";
+                // throw("there is error in this code block");  
+                document.write(name + " " + surname);
+                // throw(err); // will return surname not defined error
+            }
+            catch(err){
+                document.write(err);
+            }
+            finally{
+                document.write("<br />this statement always will work.");
+            }
+            
+        </script>
+    </body>
+</html>

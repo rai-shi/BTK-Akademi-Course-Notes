@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+body{
+    background-color: cadetblue;
+    color: wheat;
+}
+div#example1{
+    color:darkgrey;
+}
+#example2{
+    color:darkred;
+}

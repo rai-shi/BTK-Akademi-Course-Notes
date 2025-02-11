@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>math build-in function</title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript" language="javascript">
+            
+            var intValue    = 2;
+            var strValue    = "Rai";
+            var NaNValue    = "Rai"*2;
+            var NaNValue2   = NaN;
+            var floatValue  = 6.5;
+
+            // isNaN()
+            document.write("<h4>NaN</h4>");
+
+            document.write(Number.isNaN(intValue)  + "<br />");     // false
+            document.write(Number.isNaN(strValue)  + "<br />");     // false
+            document.write(Number.isNaN(NaNValue)  + "<br />");     // true
+            document.write(Number.isNaN(NaNValue2) + "<br />");     // true
+
+
+            document.write("<br />"); 
+
+            document.write(isNaN(intValue)  + "<br />");    // false
+            document.write(isNaN(strValue)  + "<br />");    // true
+            document.write(isNaN(NaNValue)  + "<br />");    // true
+            document.write(isNaN(NaNValue2) + "<br />");    // true
+
+            /*
+            Number.isNaN : değişken içerik değerinin NaN olup olmadığına bakıyor
+            isNaN        : sayı olup olmadığına bakıyor
+            */
+
+
+            // isFinite()
+            // en küçük negatif ve en büyük pozitif aralığında mı diye kontrol ediyor
+            document.write("<h4>isFinite</h4>"); 
+
+            document.write(Number.isFinite(  Number.MAX_SAFE_INTEGER )  + "<br />");    // true
+            document.write(Number.isFinite( (Number.MAX_VALUE + 9) )    + "<br />");    // true
+            document.write(Number.isFinite( (Number.MAX_VALUE * 2) )    + "<br />");    // false
+            document.write(Number.isFinite( (-Number.MAX_VALUE)*2)      + "<br />");    // false
+
+
+
+            // isInteger()
+            document.write("<h4>isInteger</h4>"); 
+
+            document.write(Number.isInteger(intValue)   + "<br />");    // true
+            document.write(Number.isInteger(strValue)   + "<br />");    // false
+            document.write(Number.isInteger(NaNValue)   + "<br />");    // false
+            document.write(Number.isInteger(floatValue) + "<br />");    // false
+
+
+            // isSafeInteger()
+            // kendisine parametre olarak verilen değişken içeriğinin değerinin güvenli bir tam sayı olup olmadığını kontrol ederek boolean veri türünde sonucu geri döndürür. 
+            document.write("<h4>isSafeInteger</h4>"); 
+
+            document.write(Number.isSafeInteger(intValue)         + "<br />");            // true
+            document.write(Number.isSafeInteger(strValue)         + "<br />");            // false
+            document.write(Number.isSafeInteger(NaNValue)         + "<br />");            // false
+            document.write(Number.isSafeInteger(floatValue)       + "<br />");            // false
+            document.write(Number.isSafeInteger(Number.MAX_VALUE) + "<br />");  
+
+
+            // toFixed()
+            // float kısmı belirtilen haneye yuvarlıyor
+            document.write("<h4>toFixed</h4>"); 
+            
+            floatValue2 = 4.15686465161651;
+            document.write(floatValue  + " : " + floatValue.toFixed(3)  + "<br />");   
+            document.write(floatValue2 + " : " + floatValue2.toFixed(3) + "<br />");    // 4.157
+            document.write(floatValue2 + " : " + floatValue2.toFixed(5) + "<br />");    // 4.15686
+            // eğer kesilen yerden sonraki ilk rakam 5ten büyükse yukarı yuvarlar, küçükse olduğu gibi kalır   
+
+
+
+            // toPrecision()
+            // değişken içerisindeki sayının kaç basamak olacağını belirleyerek oluşturulan içeriği geri döndürür.
+            // nokta hariç belirtilen kadar basamak gösterilir
+            // aynı şekilde 5ten yukarıdaki rakamlar için yukarı yuvarlama yapar
+            document.write("<h4>toPrecision</h4>"); 
+            
+            document.write(intValue     + " : " + intValue.toPrecision(5)       + "<br />");    // 2                : 2.0000
+            document.write(floatValue   + " : " + floatValue.toPrecision(8)     + "<br />");    // 6.5              : 6.5000000
+            document.write(floatValue2  + " : " + floatValue2.toPrecision(8)    + "<br />");    // 4.15686465161651 : 4.1568647
+            // eğer kesilen yerden sonraki ilk rakam 5ten büyükse yukarı yuvarlar, küçükse olduğu gibi kalır   
+            
+
+
+            // toExponantial()
+            // Kendisine parametre olarak verilen değer doğrultusunda değişken içeriğindeki sayının ondalık hanesinde kaç basamak olacağının belirleyerek, 
+            // kalan değeri üstel hale getirerek yeni bir içerik oluşturur ve bunu geri döndürür.
+            document.write("<h4>toExponential</h4>"); 
+
+            document.write(intValue     + " : " + intValue.toExponential(5)     + "<br />");    // 2                : 2.00000e+0   
+            document.write(floatValue2  + " : " + floatValue2.toExponential(4)  + "<br />");    // 4.15686465161651 : 4.1569e+0    
+            
+
+
+            document.write("<h4>parseInt</h4>"); 
+            // parseInt()
+            // Kendisine parametre olarak verilen değerler doğrultusunda değişken içeriğini tam sayı haline dönüştürerek yeni bir içerik oluşturur
+            // ve oluşturduğu içerik değerini geriye döndürür
+            // örneğin rakam, + ve - işareti haricinde bir karakter gördüğünde işlem durur
+            
+            var value  = "10";
+            var value2 = "4.5";
+            var value3 = "30 20 78";
+            var value4 = " 45 63 ";
+            var value5 = "10 number";
+            var value6 = "income 5600.45";
+            var value7 = 12;
+            var value8 = 15.89;
+
+            document.write(value  + " : " + parseInt(value)  + " -> " + typeof parseInt(value)   + "<br />"); // 10 : 10 -> number
+            document.write(value2 + " : " + parseInt(value2) + " -> " + typeof parseInt(value2)  + "<br />"); // 4.5 : 4 -> number
+            document.write(value3 + " : " + parseInt(value3) + " -> " + typeof parseInt(value3)  + "<br />"); // 30 20 78 : 30 -> number
+            document.write(value4 + " : " + parseInt(value4) + " -> " + typeof parseInt(value4)  + "<br />"); // 45 63 : 45 -> number
+            document.write(value5 + " : " + parseInt(value5) + " -> " + typeof parseInt(value5)  + "<br />"); // 10 number : 10 -> number
+            document.write(value6 + " : " + parseInt(value6) + " -> " + typeof parseInt(value6)  + "<br />"); // income 5600.45 : NaN -> number
+            document.write(value7 + " : " + parseInt(value7) + " -> " + typeof parseInt(value7)  + "<br />"); // 12 : 12 -> number
+            document.write(value8 + " : " + parseInt(value8) + " -> " + typeof parseInt(value8)  + "<br />"); // 15.89 : 15 -> number
+
+            document.write("<br />"); 
+
+            var hexa        = 0x11;         // hexadecimal
+            var hexaStr     = "0x11";       // hexadecimal
+            var hexaStr2    = "11";         // hexadecimal
+            var octal       = "11";         // octal
+
+            document.write(hexa     + " : " + parseInt(hexa)            + " -> " + typeof parseInt(hexa)            + "<br />"); // 17 : 17 -> number
+            document.write(hexaStr  + " : " + parseInt(hexaStr)         + " -> " + typeof parseInt(hexaStr)         + "<br />"); // 0x11 : 17 -> number
+            document.write(hexaStr2 + " : " + parseInt(hexaStr2, 16)    + " -> " + typeof parseInt(hexaStr2, 16)    + "<br />"); // 11 : 17 -> number
+            document.write(octal    + " : " + parseInt(octal, 8)        + " -> " + typeof parseInt(octal, 8)        + "<br />"); // 11 : 9-> number
+            
+
+
+            document.write("<h4>parseFloat</h4>"); 
+            // parseFloat()
+
+            document.write(value  + " : " + parseFloat(value)  + " -> " + typeof parseFloat(value)   + "<br />"); // 10 : 10 -> number
+            document.write(value2 + " : " + parseFloat(value2) + " -> " + typeof parseFloat(value2)  + "<br />"); // 4.5 : 4 -> number
+            document.write(value3 + " : " + parseFloat(value3) + " -> " + typeof parseFloat(value3)  + "<br />"); // 30 20 78 : 30 -> number
+            document.write(value4 + " : " + parseFloat(value4) + " -> " + typeof parseFloat(value4)  + "<br />"); // 45 63 : 45 -> number
+            document.write(value5 + " : " + parseFloat(value5) + " -> " + typeof parseFloat(value5)  + "<br />"); // 10 number : 10 -> number
+            document.write(value6 + " : " + parseFloat(value6) + " -> " + typeof parseFloat(value6)  + "<br />"); // income 5600.45 : NaN -> number
+            document.write(value7 + " : " + parseFloat(value7) + " -> " + typeof parseFloat(value7)  + "<br />"); // 12 : 12 -> number
+            document.write(value8 + " : " + parseFloat(value8) + " -> " + typeof parseFloat(value8)  + "<br />"); // 15.89 : 15 -> number
+
+            document.write("<br />"); 
+
+            var hexa        = 0x11;         // hexadecimal
+            var hexaStr     = "0x11";       // hexadecimal
+            var hexaStr2    = "11";         // hexadecimal
+            var octal       = "11";         // octal
+
+            document.write(hexa     + " : " + parseFloat(hexa)            + " -> " + typeof parseFloat(hexa)            + "<br />"); // 17 : 17 -> number
+            document.write(hexaStr  + " : " + parseFloat(hexaStr)         + " -> " + typeof parseFloat(hexaStr)         + "<br />"); // 0x11 : 17 -> number
+            document.write(hexaStr2 + " : " + parseFloat(hexaStr2, 16)    + " -> " + typeof parseFloat(hexaStr2, 16)    + "<br />"); // 11 : 17 -> number
+            document.write(octal    + " : " + parseFloat(octal, 8)        + " -> " + typeof parseFloat(octal, 8)        + "<br />"); // 11 : 9-> number
+            
+            // - değer de dene
+
+            // toString()
+            // değişken içeriğini string veri türünde düz bir metne dönüştürerek oluşturduğu değeri geri döndürür.
+            document.write("<h4>toString</h4>"); 
+            document.write(intValue     + " : " + intValue.toString()       + " -> " + typeof intValue.toString()   + "<br />"); // 2
+            document.write(floatValue   + " : " + floatValue.toString()     + " -> " + typeof floatValue.toString() + "<br />"); // 6.5
+            document.write(NaNValue2    + " : " + NaNValue2.toString()      + " -> " + typeof NaNValue2.toString()  + "<br />"); // NaN
+            document.write((1+8.57)     + " : " + (1+8.57).toString()       + " -> " + typeof (1+8.57).toString()   + "<br />"); // 9.57
+
+
+            // String()
+            // daha güçlü
+            // mutlak olarak hangi veri tipi olursa olsun string dönüşümü yapar
+            document.write("<h4>String</h4>"); 
+
+            var my_list     = [1,2,3,4];
+            var boolValue   = false;
+            var date        = new Date();
+            document.write(intValue     + " : " + String(intValue)       + " -> " + typeof String(intValue)    + "<br />"); // 2
+            document.write(floatValue   + " : " + String(floatValue)     + " -> " + typeof String(floatValue)  + "<br />"); // 6.5
+            document.write(NaNValue2    + " : " + String(NaNValue2)      + " -> " + typeof String(NaNValue2)   + "<br />"); // NaN
+            document.write((1+8.57)     + " : " + String((1+8.57))       + " -> " + typeof String((1+8.57))    + "<br />"); // 9.57
+            document.write((my_list)    + " : " + String(my_list)        + " -> " + typeof String(my_list)     + "<br />"); // 1,2,3,4
+            document.write(boolValue    + " : " + String(boolValue)      + " -> " + typeof String(boolValue)   + "<br />"); // false
+            document.write(date         + " : " + String(date)           + " -> " + typeof String(date)        + "<br />"); // Sat Nov 30 2024 19:02:53 GMT+0300 (GMT+03:00)
+
+            var str_my_list = String(my_list); 
+            document.write(str_my_list.slice(2,5)); // 2,3
+
+
+            // Number()
+            // değişken içeriğini mutlak olarak number veri türüne dönüştürerek oluşturduğu içeriği geriye döndürür.
+            document.write("<h4>Number</h4>"); 
+            document.write(floatValue   + " : " + Number(floatValue)     + " -> " + typeof Number(floatValue)  + "<br />"); // 6.5
+            document.write(NaNValue2    + " : " + Number(NaNValue2)      + " -> " + typeof Number(NaNValue2)   + "<br />"); // NaN
+            document.write((my_list)    + " : " + Number(my_list)        + " -> " + typeof Number(my_list)     + "<br />"); // NaN
+            document.write(boolValue    + " : " + Number(boolValue)      + " -> " + typeof Number(boolValue)   + "<br />"); // 0
+            document.write(date         + " : " + Number(date)           + " -> " + typeof Number(date)        + "<br />"); // 1732982903439 
+            document.write(value        + " : " + Number(value)          + " -> " + typeof Number(value)       + " -> " + Number.isInteger(Number(value))  + "<br />");  // 10, true
+            document.write(value2       + " : " + Number(value2)         + " -> " + typeof Number(value2)      + " -> " + Number.isInteger(Number(value2)) +  "<br />"); // 4.5 false
+
+
+            // valueOf()
+            // üzerinde çalışılan değişken değerinin tam anlamıyla aktarımını sağlayarak yeni bir içerik oluşturur
+            // veri oluşturduğu değeri geriye döndürür
+            // değer ve veri türü aktarımı
+            document.write("<h4>valueOf</h4>"); 
+
+            var max_value   = Number.MAX_VALUE;
+            var max_copy    = max_value.valueOf();
+
+            var nan_copy    = NaNValue2.valueOf();
+
+            document.write(max_value + " : " + typeof max_value + " -> " + max_copy + " : " + typeof max_value + "<br />");
+            document.write(NaNValue2 + " : " + typeof NaNValue2 + " -> " + nan_copy + " : " + typeof nan_copy  + "<br />");
+
+
+            // ceil()
+            // float değerleri yukarı yuvalar.
+            document.write("<h4>ceil</h4>"); 
+
+            floatValue3 = 6.7;
+            floatValue4 = 5.0000001;
+            floatValue5 = 9.00;
+
+            document.write(floatValue  + " -> " + Math.ceil(floatValue)  + "<br />"); // 6.5 -> 7
+            document.write(floatValue2 + " -> " + Math.ceil(floatValue2) + "<br />"); // 4.15686465161651 -> 5
+            document.write(floatValue3 + " -> " + Math.ceil(floatValue3) + "<br />"); // 6.7 -> 7
+            document.write(floatValue4 + " -> " + Math.ceil(floatValue4) + "<br />"); // 5.0000001 -> 6
+            document.write(floatValue5 + " -> " + Math.ceil(floatValue5) + "<br />"); // 9 -> 9
+
+
+            // floor()
+            // float değerleri aşağı yuvarlar
+            document.write("<h4>floor</h4>"); 
+
+            document.write(floatValue  + " -> " + Math.floor(floatValue)  + "<br />"); // 6.5 -> 6
+            document.write(floatValue2 + " -> " + Math.floor(floatValue2) + "<br />"); // 4.15686465161651 -> 4
+            document.write(floatValue3 + " -> " + Math.floor(floatValue3) + "<br />"); // 6.7 -> 6
+            document.write(floatValue4 + " -> " + Math.floor(floatValue4) + "<br />"); // 5.0000001 -> 5
+            document.write(floatValue5 + " -> " + Math.floor(floatValue5) + "<br />"); // 9 -> 9
+
+
+            // round()
+            // en yakın tam sayı değerini kontrol ederek yuvarlama yapar
+            document.write("<h4>round</h4>"); 
+
+            floatValue6 = 2.49;
+            floatValue7 = 9.84;
+
+            document.write(floatValue  + " -> " + Math.round(floatValue)  + "<br />"); // 6.5 -> 7
+            document.write(floatValue2 + " -> " + Math.round(floatValue2) + "<br />"); // 4.15686465161651 -> 4
+            document.write(floatValue3 + " -> " + Math.round(floatValue3) + "<br />"); // 6.7 -> 7
+            document.write(floatValue4 + " -> " + Math.round(floatValue4) + "<br />"); // 5.0000001 -> 5
+            document.write(floatValue5 + " -> " + Math.round(floatValue5) + "<br />"); // 9 -> 9
+            document.write(floatValue6 + " -> " + Math.round(floatValue6) + "<br />"); // 2.49 -> 2
+            document.write(floatValue7 + " -> " + Math.round(floatValue7) + "<br />"); // 9.84 -> 10
+
+
+            // trunc()
+            // kendisine verilen herhangi bir ondalıklı sayı değerinin ondalık kısmını kaldırarak, tam sayı değerini geri döndürür.
+            document.write("<h4>trunc</h4>"); 
+
+            document.write(floatValue  + " -> " + Math.trunc(floatValue)  + "<br />"); // 6.5 -> 6
+            document.write(floatValue2 + " -> " + Math.trunc(floatValue2) + "<br />"); // 4.15686465161651 -> 4
+            document.write(floatValue3 + " -> " + Math.trunc(floatValue3) + "<br />"); // 6.7 -> 6
+            document.write(floatValue4 + " -> " + Math.trunc(floatValue4) + "<br />"); // 5.0000001 -> 5
+            document.write(floatValue5 + " -> " + Math.trunc(floatValue5) + "<br />"); // 9 -> 9
+            document.write(floatValue6 + " -> " + Math.trunc(floatValue6) + "<br />"); // 2.49 -> 2
+            document.write(floatValue7 + " -> " + Math.trunc(floatValue7) + "<br />"); // 9.84 -> 9
+
+
+            // random()
+            // 0 ile 1 arasında rastgele bir sayı üreterek ürettiği değeri geri döndürür
+            // hangi sayı aralığında olmasını istiyorsan ona göre düzenleme yapabilirsin
+            document.write("<h4>random</h4>"); 
+
+            document.write(Math.random() + "<br />");                   // 0.7998359575927694
+            document.write( Math.ceil((Math.random()*100)) + "<br />"); // 45
+            document.write( Math.trunc((Math.random()*10)) + "<br />"); // 5
+
+
+            // sign()
+            // kendisine parametre olarak verilen herhangi bir sayı değerinin işaretini bularak sonucu geriye döndürür. 
+            // positive değerlerde 1
+            // negative değerlerde -1
+            // 0 sayısında 0
+            // numeric olmayan değerlerde ise NaN dönüyor
+            document.write("<h4>sign</h4>"); 
+
+            var negatif = -5.4;
+            var zero = 0;
+
+            document.write(intValue     + " -> " + Math.sign(intValue)      + "<br />"); // 2    -> 1
+            document.write(floatValue   + " -> " + Math.sign(floatValue)    + "<br />"); // 6.5  -> 1
+            document.write(strValue     + " -> " + Math.sign(strValue)      + "<br />"); // Rai  -> NaN
+            document.write(NaNValue2    + " -> " + Math.sign(NaNValue2)     + "<br />"); // NaN  -> NaN
+            document.write(negatif      + " -> " + Math.sign(negatif)       + "<br />"); // -5.4 -> -1
+            document.write(zero         + " -> " + Math.sign(zero)          + "<br />"); // 0    -> 0
+
+
+            // min()
+            // kendisine parametre olarak verilen sayı değerlerinin en küçüğünü bularak bulduğu değeri geri döndürür.
+            document.write("<h4>min</h4>"); 
+
+            my_list = [ 95, 4.2 , 7, 1, 0.26468, 0.1543 ];
+            document.write(my_list + "-> min(): " + Math.min(my_list) + "<br />"); // NaN , param olarak list verilemiyor demekki
+            document.write(intValue + " " + floatValue + " " + negatif + " " + zero + "-> min(): " + Math.min(intValue, floatValue, negatif, zero) + "<br />"); // 2 6.5 -5.4 0-> min(): -5.4
+
+            // max()
+            document.write("<h4>max</h4>"); 
+
+            document.write(my_list + "-> max(): " + Math.max(my_list) + "<br />"); // NaN , param olarak list verilemiyor demekki
+            document.write(intValue + " " + floatValue + " " + negatif + " " + zero + "-> max(): " + Math.max(intValue, floatValue, negatif, zero) + "<br />"); // 2 6.5 -5.4 0-> max(): 6.5
+
+
+            // pow()
+            // verilen parametrelerden ilki base ikincisi üs olmak üzere üs alma işlemi yapar x**y
+            document.write("<h4>pow</h4>"); 
+
+            document.write("6" + "2".sup()  + " = " + Math.pow(6,2)  + "<br />");   // 36
+            document.write("8" + "0".sup()  + " = " + Math.pow(8,0)  + "<br />");   // 1
+            document.write("2" + "-2".sup() + " = " + Math.pow(2,-2) + "<br />");   // 0.25
+            document.write("36" + "1/2".sup() + " = " + Math.pow(36,1/2) + "<br />");   // 6
+            document.write(2**(-2)); // 0.25
+
+
+            // abs()
+            // mutlak değeri geri döner
+            document.write("<h4>abs</h4>"); 
+            document.write( 144     + " -> " + Math.abs(144)    + "<br />");    // 144
+            document.write( -144    + " -> " + Math.abs(-144)   + "<br />");    // 144
+            document.write( 0       + " -> " + Math.abs(0)      + "<br />");    // 0
+
+
+            // sqrt()
+            // verilen parametre olarak verilen herhangi bir sayı değerinin karekökünü bularak, bulduğu değeri geri döndürür 
+            document.write("<h4>sqrt</h4>"); 
+            document.write( 144     + " -> " + Math.sqrt(144)    + "<br />");    // 144
+            document.write( 9       + " -> " + Math.sqrt(9)      + "<br />");    // 3
+            document.write( 10      + " -> " + Math.sqrt(10)     + "<br />");    // 3.1622776601683795
+            
+
+            // cbrt()
+            // kendisine parametre olarak verilen herhangi bir sayının küp kökünü bularak bulduğu değeri geriye döndürür
+            document.write("<h4>cbrt</h4>"); 
+
+            document.write( 10   + " -> " + Math.cbrt(10)       + "<br />");    // 2.154434690031884 
+            document.write( 1000 + " -> " + Math.cbrt(1000)     + "<br />");    // 10
+            document.write( 27   + " -> " + Math.cbrt(27)       + "<br />");    // 3
+
+
+            // sin(x)
+            // x : A number representing an angle in radians.
+            // The sine of x, between -1 and 1, inclusive. If x is Infinity, -Infinity, or NaN, returns NaN.
+            
+            document.write("<h4>sin</h4>"); 
+
+            function getRadian(degree)
+            {
+                return degree * (Math.PI/180);
+            }
+
+            var radian_90   = getRadian(90);
+            var radian_180  = getRadian(180);
+            var radian_45   = getRadian(45);
+            var radian_30   = getRadian(30);
+
+            document.write( 90          + " -> " + Math.sin(90)             + "<br />");   // 90                    -> 0.8939966636005579 
+            document.write( radian_90   + " -> " + Math.sin(radian_90)      + "<br />");   // 1.5707963267948966    -> 1
+            document.write( radian_180  + " -> " + Math.sin(radian_180)     + "<br />");   // 3.141592653589793     -> 1.2246467991473532e-16
+            document.write( radian_45   + " -> " + Math.sin(radian_45)      + "<br />");   // 0.7853981633974483    -> 0.7071067811865475  
+            document.write( radian_30   + " -> " + Math.sin(radian_30)      + "<br />");   // 0.5235987755982988    -> 0.49999999999999994      , neredeyse 1/2
+            document.write( 0           + " -> " + Math.sin(0)              + "<br />");   // 0                     -> 0 
+            
+            document.write("<br />");
+            document.write( radian_180  + " -> " + Math.round(Math.sin(radian_180))             + "<br />");    // 3.141592653589793 -> 0
+            document.write( radian_30   + " -> " + Math.round(Math.sin(radian_30)*100)/100      + "<br />");    // 0.5235987755982988 -> 0.5
+            // JavaScript (ve diğer dillerdeki sin fonksiyonları), sayıları IEEE 754 standardına göre temsil eder.
+            // Bu standart, bazı ondalık değerleri tam olarak ifade edemediği için çok küçük hatalara yol açar. 
+            // Bu yüzden, teoride sıfır olması gereken sonuç sıfıra çok yakın bir değer olarak çıkar.
+             
+
+            // sinh()
+            // hiperbolik sinüs
+            // Math.sinh() fonksiyonuna herhangi bir radyan veya derece gerekmez, çünkü hiperbolik sinüs, doğrudan bir sayı (gerçek bir değer) alır. 
+            // Yani fonksiyonun içine pozitif veya negatif bir sayı koyabilirsiniz.
+            // (e^x - e^(-x)) / 2
+            document.write("<h4>sinh</h4>"); 
+
+            document.write( 90          + " -> " + Math.sinh(90)            + "<br />");   // 90                 -> 6.102016471589204e+38
+            document.write( 1           + " -> " + Math.sinh(1)             + "<br />");   // 1                  -> 1.1752011936438014
+            document.write( radian_90   + " -> " + Math.sinh(radian_90)     + "<br />");   // 1.5707963267948966 -> 2.3012989023072947
+
+            // sinh(x) = (e^x - e^(-x)) / 2
+            function hyperbolic_sin(value)
+            {
+                return (Math.pow(Math.E, value) - Math.pow(Math.E, -(value))) / 2
+            }
+            document.write("hyperbolic sin equation with euler constant <br />");
+            document.write( 1 + " -> " + hyperbolic_sin(1) + "<br />");         // 1 -> 1.1752011936438014
+
+
+            // asin()
+            // kendisine verilen -1 ile 1 arasındaki sayı değerinin arc sinüsünü radyan cinsinden geri döndürür
+
+            // JavaScript'teki Math.asin() fonksiyonu, bir sayının ark sinüsünü (ters sinüsünü) hesaplar. 
+            // Bu fonksiyon, bir sayıyı alır ve o sayının sinüs fonksiyonunda hangi açıya karşılık geldiğini döndürür. Sonuç radyan cinsindedir.
+            // Math.asin() fonksiyonunun içine −1 ile 1 arasında bir sayı girmelisiniz. Çünkü sinüs fonksiyonunun aralığı [−1,1]'dir.
+            // Eğer bu aralığın dışındaki bir değer verirseniz, JavaScript NaN döndürür (geçersiz sonuç).      
+
+            document.write("<h4>asin</h4>"); 
+
+            // sin(90)  : 1
+            // sin(180) : 0
+            // sin(30)  : 0.5
+
+            var asin_90     = 1;
+            var asin_180    = 0;
+            var asin_30     = 0.5;
+
+            var asin_radian_90   = Math.asin(asin_90);
+            var asin_radian_180  = Math.asin(asin_180);
+            var asin_radian_30   = Math.asin(asin_30);
+
+            function getDegree(radian)
+            {
+                return (radian*180) / Math.PI;   
+            }
+
+            document.write(asin_90  + " -> " + getDegree(asin_radian_90)    + "<br />");    // 1    -> 90
+            document.write(asin_30  + " -> " + getDegree(asin_radian_30)    + "<br />");    // 0.5  -> 30.000000000000004
+            document.write(asin_180 + " -> " + getDegree(asin_radian_180)   + "<br />");    // 0    -> 0
+
+            
+            // asinh()
+            // hiperbolik arc sinüs
+            document.write("<h4>asinh</h4>"); 
+
+            document.write( Math.sinh(90)           + " -> " + Math.asinh(Math.sinh(90))            + "<br />");   // 6.102016471589204e+38 -> 90
+            document.write( Math.sinh(1)            + " -> " + Math.asinh(Math.sinh(1))             + "<br />");   // 1.1752011936438014    -> 1
+            document.write( Math.sinh(radian_90)    + " -> " + Math.asinh(Math.sinh(radian_90))     + "<br />");   // 2.3012989023072947    -> 1.5707963267948966
+
+
+            // cos()  cosh()  acos()  acosh()
+
+            // tan()  tanh()  atan()  atanh()
+
+            // atan2()
+            // parametre olarak verilen 2 sayının ark tanjantını radyan cinsinden bularak, bulduğu değeri geriye döndürür.
+            // 2 değer alıyor
+
+            // atan2(x,y) fonksiyonu, (x,y) koordinat düzlemindeki bir noktanın orijine göre açısını (radyan cinsinden) hesaplar. 
+            // Bu fonksiyon, trigonometrik arktanjant (arctan) işleminin gelişmiş bir versiyonudur ve doğru dörtlüğü (kuadrantı) hesaba katar.
+            // −π≤Math.atan2(y,x)≤π
+
+            document.write("<h4>atan2</h4>"); 
+
+            let angle_45    = Math.atan2(1, 1);     // 0.7853981633974483 (radyan cinsinden) (yaklaşık π/4)
+            let angle_90    = Math.atan2(-1, 0);    // -1.5707963267948966 (yaklaşık -π/2)
+            let angle_0     = Math.atan2(0, 0);     // 0
+
+            document.write("atan2(1, 1) -> "    + getDegree(angle_45)   + "<br />");    // atan2(1, 1) -> 45
+            document.write("atan2(-1, 0) -> "   + getDegree(angle_90)   + "<br />");    // atan2(-1, 0) -> -90
+            document.write("atan2(0, 0) -> "    + getDegree(angle_0)    + "<br />");    // atan2(0, 0) -> 0
+
+
+            // exp()
+            // e ** x
+            // x power of e, base is e
+            // kendisine parametre olarak verilen herhangi bir sayı değerinin euler sayı üssünü bularak bulduğu değeri geri döndürür
+            document.write("<h4>exp</h4>"); 
+
+            document.write(Math.exp(0) + "<br />");  // 1
+            document.write(Math.exp(1) + "<br />");  // 2.718281828459045
+            document.write(Math.exp(2) + "<br />");  // 7.38905609893065
+            
+
+            // expm1()
+            // (num ** e) - 1
+            document.write("<h4>expm1</h4>"); 
+
+            document.write(Math.expm1(0) + "<br />");  // 0
+            document.write(Math.expm1(1) + "<br />");  // 1.718281828459045
+            document.write(Math.expm1(2) + "<br />");  // 2.38905609893065
+
+
+            // log()
+            // doğal logaritma, base -> e 
+            document.write("<h4>log</h4>"); 
+
+            document.write(Math.log(0) + "<br />");  // -Infinity
+            document.write(Math.log(1) + "<br />");  // 0
+            document.write(Math.log(2.718281828459045) + "<br />");  // 1
+            document.write(Math.log(2.71) + "<br />");  // 0.9969486348916095
+
+            // son olarak belirtilebilirki Math.exp() ile Math.log() fonksiyonları birbirinin tersidir.
+        </script>
+    </body>
+</html>

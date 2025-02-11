@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+    <head lang="tr-TR">
+        <meta http-equiv="content-type" content="text/html; charset= utf-8" >
+        <title>Deneme</title>
+        
+    </head>
+    <body>
+        <script>
+            // basic data types
+            // string 
+            let string_exp1 = "Hello World!";   // with ""
+            let string_exp2 = 'Hello World!';   // with ''
+            // number
+            let number_exp1 = 10;       // integer
+            let number_exp2 = 10.5;     // float
+            let number_exp3 = 0b1010;   // binary
+            let number_exp4 = 0o12;     // octal
+            let number_exp5 = 0xA;      // hexadecimal
+            // boolean
+            let boolean_exp1 = true;
+            let boolean_exp2 = false;
+        </script>
+        <script>
+            // composite data types
+            // array
+            let array_exp1 = [1, 2, 3, 4, 5];
+            let array_exp2 = ["John", "Doe", 30, "Software Developer"];
+            // object
+            let object_exp1 = {name: "John", surname: "Doe", age: 30, job: "Software Developer"};
+            // function
+            let function_exp1 = function() {
+                return "Hello World!";
+            };
+        </script>
+
+        <script>
+            // special data types
+            // null
+            let null_exp = null;
+
+            // undefined
+            let undefined_exp = undefined;
+        </script>
+
+        <script>
+            // operators
+
+            //bitwise operators
+            // & and
+            // | or
+            // ^ xor
+            // ~ not
+            // << left shift
+            // >> right shift
+            // >>> zero fill right shift
+
+            // logical operators
+            // && and
+            // || or
+            // ! not
+
+            // comparison operators
+            // == equal
+            var c = 10
+            var d = 20
+            c == d // false
+            c == c // true
+
+            var e = "10"
+            c == e // true
+
+            // === strict equal
+            c === e // false
+            c === c // true
+
+            // != not equal
+            // !== strict not equal
+            // > greater than
+            // < less than
+            // >= greater than or equal
+            // <= less than or equal
+
+            // arithmetic operators
+            // + addition
+            // - subtraction
+            // * multiplication
+            // / division
+            // % modulus
+            // ++ increment
+            // -- decrement
+            
+            // assignment operators
+            // = assignment
+            // += addition assignment
+            // -= subtraction assignment
+            // *= multiplication assignment
+            // /= division assignment
+            // %= modulus assignment
+            // **= exponentiation assignment
+            // <<= left shift assignment
+            // >>= right shift assignment
+            // >>>= zero fill right shift assignment
+            // &= and assignment
+            // |= or assignment
+            // ^= xor assignment
+            var a = undefined
+            var b = 20
+            a = b
+            a += b // a = a + b 
+
+
+            // special operators
+
+            // concatenation operator
+            // + concatenation
+            var f = "Hello"
+            var g = "World"
+            f + g // HelloWorld
+
+            // escape character
+            // \ escape
+            // \n new line
+            // \t tab
+            // \b backspace
+            // \r carriage return paragraph break
+            // \f form feed
+            // \' single quote 
+            // \" double quote
+            // \\ backslash
+            // \V vertical tab
+            // \xXX hexadecimal escape
+            // \uXXX octal escape
+            // \uXXXX unicode escape
+
+            // comma operator
+            // , comma
+            var h = 10, i = 20, j = 30
+            for (var k = 0, l = 10; k < l; k++) {
+                console.log(k)
+            }
+
+            // conditional operators 
+            // ? : conditional, ternary
+            // a = (condition) ? value1 : value2
+            var result = (b > 10) ? "Greater than 10" : "Less than or equal to 10"
+
+            // type operators
+            // typeof
+            typeof b // number
+            typeof "Hello" // string
+            typeof(true) // boolean
+
+            // void 
+            // herhangi bir ifadenin geri veri tipi döndürmesini engellemek için kullanılır
+            // geriye her zaman undefined döner
+            void(0) // undefined
+            void("Hello") // undefined
+            //????
+
+            // delete
+            // bir nesneyi veya nesnenin özelliğini silmek için kullanılır
+            var person = {name: "John", surname: "Doe", age: 30}
+            delete person.age // person nesnesinin age özelliğini sildik
+
+            // new
+            // yeni bir nesne oluşturmak için kullanılır
+            var date = new Date()
+            var array = new Array(1, 2, 3, 4, 5)
+
+            // this
+            // bir nesnenin özelliğine erişmek için kullanılır
+            var person = {
+                name: "John",
+                surname: "Doe",
+                age: 30,
+                fullName: function() {
+                    return this.name + " " + this.surname
+                }
+            }
+
+            // instanceof
+            // bir nesnenin belirli bir sınıfa ait olup olmadığını kontrol etmek için kullanılır
+            // objectName instanceof objectType
+            var cars = ["BMW", "Volvo", "Saab", "Ford"]
+            cars instanceof Array // true
+
+            // in
+            // bir nesnenin belirli bir özelliğinin olup olmadığını kontrol etmek için kullanılır
+            // attribute in objectName
+            var cars = ["BMW", "Volvo", "Saab", "Ford"]
+            0 in cars // true
+            a = new Object()
+            a.name = "John"
+            "name" in a // true
+            "surname" in a // false
+        </script>
+        
+    </body>
+</html>

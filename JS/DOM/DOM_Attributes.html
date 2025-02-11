@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Attributes</title>
+        <style> 
+            .old {
+                background-color: cadetblue; 
+                color: cornsilk;
+            }
+            .new {
+                background-color: red; 
+                color:beige;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="buttonID" name="buttonName" class="old"  onclick="">CLICK</button>
+        <br>
+        <div id="result-area"></div>
+        <br>
+        <div id="result-area2"></div>
+        <script type="text/javascript">
+            // item
+            // Belge üzerindeki html elemanına eklenmiş olan özellik node'u refereansını elde etmek veya ayarlamak için kullanılır.
+            // html elemanı içerisindeki özellik sayısı birden fazla ise her bir özellik node'u loop ile alınabilir
+
+            var button = document.getElementById("buttonID");
+            var result = button.attributes.item(2);
+            
+            document.getElementById("result-area2").innerHTML = result.name; 
+            // result.name : class
+            // result.value : background-color: cadetblue; color: cornsilk;
+            button 
+            result.value = "new";
+            // new classı atandı
+        </script>
+    </body>
+</html>

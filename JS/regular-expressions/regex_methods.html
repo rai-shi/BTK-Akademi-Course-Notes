@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>regex multiline</title>
+
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript" language="javascript">
+
+            document.write("<h3>regex functions</h3>"); 
+
+            document.write("<h3>test()</h3>"); 
+            // test() 
+            // kendisine parametre olarak verilen değişken içeriğinde düzenli ifade ile aranan değer eşleşmesinin
+            // olup olmadığını kontrol ederek boolean veri türünde sonuç döndürür.
+            document.write("<h4>test()</h4>"); 
+
+            var text        = "Hey Rai wassup!";
+            var exp         = new RegExp("Rai");    // /Rai/;
+
+            var check = exp.test(text); //  -> boolean
+            // text.match(exp)              -> match_str or null
+            document.write(check + "<br />"); // true
+
+
+            document.write("<h4>input</h4>"); 
+            // input !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            // değişken içeriğinde regex ile aranan değerin eşleşmesi durumunda eşleşmeyi sağlayan değişken içeriğinin tüm değeri geri döndürülür
+            // testten sonra çalışır ve input match değeri yakalar
+            // exp.test(text);
+            // burada yukarıdaki test ifadesi yeterli
+            var result = RegExp.input;
+            document.write(result + "<br />"); // Hey Rai wassup!
+
+            var exp2 = /bidi/;
+            exp2.test(text);
+            var result2 = RegExp.input;
+            document.write(result2 + "<br />"); // Hey Rai wassup!   -> çünkü hala yukarıdaki true da kaldı
+
+            function Input(pattern, text)
+            {
+                var check = pattern.test(text);
+                var result = RegExp.input;
+                document.write(check + " -> " + result + "<br />");
+                // return result;
+            }
+            Input(exp, text);
+            Input(exp2, text);
+            // if else içinde yapmak daha doğru böyle riskli
+
+
+            document.write("<h4>source</h4>"); 
+            // source
+            //  düzenli ifade içinde kullanılan desen değerini geri döndürür
+
+            document.write(exp + " -> " + exp.source + "<br />"); // /Rai/ -> Rai
+
+            var copy_pattern = exp;
+            document.write(copy_pattern + " -> " + copy_pattern.source + "<br />"); // /Rai/ -> Rai
+
+            exp3 = new RegExp("bidi", "gim");
+            document.write(exp3 + " -> " + exp3.source + "<br />"); // /bidi/gim -> bidi
+
+
+            document.write("<h4>search()</h4>"); 
+            // search()
+            // regexi string içinde arar ve ilk eşleşmenin indis değerini döndürür
+
+            var index = text.search(exp);
+            document.write(exp.source + " is at index " + index + " in " + text + "<br />"); // Rai is at index 4 in Hey Rai wassup!
+
+            
+            document.write("<h4>lastIndex()</h4>"); 
+            // lastIndex()
+            // değişken içeriğinde düzenli ifade ile aranan değerin eşleşmesi durumunda ilk eşleşmeyi sağlayan değişken içeriğinin bir sonraki indis değerini geri döndürür
+
+            exp.test(text);
+            var result3 = exp.lastIndex;
+            document.write(result3 + "<br />");  // 0
+
+            exp4 = /Rai/g;
+            exp4.test(text);
+            var result4 = exp4.lastIndex;
+            document.write(result4 + "<br />");  // 7 -> g sayesinde çalıştı
+
+            text2 = "hey rai! wassup Rai!";
+
+            exp5 = /rai/ig;
+            while(exp5.test(text2) == true)
+            {
+                var result = exp5.lastIndex;
+                document.write(result + "<br />"); // 7, 19
+            }
+
+            document.write("<h4>lastMatch()</h4>"); 
+            // lastMatch()
+            // değişken içeriğinde düzenli ifade ile aranan değerin eşleşmesi durumunda son eşleşmeyi sağlayan değişken içeriğinin değerini geriye döndürür
+                
+            document.write(text2 + "<br />");
+            exp5.test(text2);
+            var result5 = RegExp.lastMatch; // testte doğrulandığı için tutulan sonuç çıktıya veriliyor
+            // bu fonksiyonları ard arda kullanmamak önemli, sanırım test() ilk kullanıldığı yerdeki değişkeni tutmaya devam ediyor.
+            document.write(result5 + "<br />"); // rai
+
+
+            document.write("<h4>leftContext()</h4>"); 
+            // leftContext()
+            // değişken içeriğinde düzenli ifade ile aranan değerin eşleşmesi durumunda eşleşmeyi sağlayan değişken içeriğinin değerinin solunda kalan değerlerin tümü döndürülür
+
+            document.write(text2 + "<br />");
+            exp5.test(text2);
+            var result6 = RegExp.leftContext;
+            document.write(result6 + "<br />"); // hey rai! wassup
+
+
+            document.write("<h4>rightContext()</h4>"); 
+            // rightContext()
+            // değişken içeriğinde düzenli ifade ile aranan değerin eşleşmesi durumunda eşleşmeyi sağlayan değişken içeriğinin değerinin sağında kalan değerlerin tümü döndürülür
+
+            document.write(text2 + "<br />");
+            exp5.test(text2); // "Rai" yakalandı
+            var result7 = RegExp.rightContext;
+            document.write(result7 + "<br />"); // !
+
+            
+            document.write("<h4>replace()</h4>"); 
+            // replace()
+            // kendisine verilecek olan düzenli ifadeli parametreler doğrultusunda değişken içeriğini kontrol eder ve aranan değerin eşleşmesi durumunda eşleşmeyi sağlayan değerlerin değişimini sağlayarak yeni bir içerik oluşturur ve oluşturduğu değeri geriye döndürür
+
+            document.write("Searched value: " + text2 + "<br />"); // Searched value: hey rai! wassup Rai!
+            document.write("Searching value: " + exp.source + "<br />"); // Searching value: Rai
+            
+            var result8 = text2.replace(exp5, "Felix");
+            document.write(result8 + "<br />"); // hey Felix! wassup Felix!
+
+            // new RegExp("(hey|wassup)")
+            var result9 = text2.replace(/(hey|wassup)/g, "hello");
+            document.write(result9 + "<br />"); // hello rai! hello Rai!
+
+
+            document.write("<h4>split()</h4>"); 
+            // split()
+            // kendisine parametre olarak verilen düzenli ifadeli değer doğrultusunda değişken içeriğini kontrol eder ve aranan değerin eşleşmesi durumunda eşleşmeyi sağlayan değişken içeriği değerlerini bölümleyerek yeni bir dizi oluşturur ve bu diziyi geriye döndürür
+
+            var text3 = "Javascript PHP HTML CSS XML Python";
+            var exp6 = new RegExp(" ", "g"); //     / /g;
+
+            document.write(text3 + "<br />"); // Javascript PHP HTML CSS XML Python
+
+            var result10 = text3.split(exp6); 
+            document.write(result10 + "<br />"); // Javascript,PHP,HTML,CSS,XML,Python
+            document.write(result10[0] + "<br />"); // Javascript
+
+            var text4 = "Javascript*PHP-HTML CSS?XML!Python";
+            var exp7 = new RegExp("\\W", "g"); //     /\W/g
+
+            document.write(text4 + "<br />"); // Javascript*PHP-HTML CSS?XML!Python
+
+            var result11 = text4.split(exp7); 
+            document.write(result11 + "<br />"); // Javascript,PHP,HTML,CSS,XML,Python
+            document.write(result11[0] + "<br />"); // Javascript
+
+
+            document.write("<h4>exec()</h4>"); 
+            // exec()
+            // kendisine parametre olarak verilen değişken içeriğinde düzenli ifade ile aranan değerin eşleşmesi durumunda eşleşmeyi sağlayan değişken içeriği değerinden yeni bir dzi oluşturarak oluşturduğu dizi değerini geriye döndürür
+            // exec kendi içinde lastIndex çalıştırır, kendine çalıştırmak bir sonraki eşleşşmeyi bulmak için her çalışmasında lastIndex ile yeni başlayacağı pozisyonu belirler
+            // burada lastIndexi güncelleyen g tanımlamasıdır. g tanımlaması olmasaydı her seferinde aramaya başlanacak pozisyon 0 olurdu.
+
+            var text5 = "Felix, felix, FELIX*FeLiX";
+            document.write(text5 + "<br />"); // Felix, felix, FELIX*FeLiX
+
+            var exp8 = new RegExp("felix", "g");
+
+            var result12 = exp8.exec(text5); 
+            document.write(result12 + "<br />"); // felix
+
+            var result13 = exp8.exec(text5);
+            document.write(result13 + "<br />"); // null
+
+            var exp9 = new RegExp("felix", "gi");
+
+            var result14 = exp9.exec(text5);
+            document.write(result14 + "<br />"); // Felix
+
+            var result15 = exp9.exec(text5);
+            document.write(result15 + "<br />"); // felix
+
+            var result16 = exp9.exec(text5);
+            document.write(result16 + "<br />"); // FELIX
+
+
+            document.write("<h4>toString()</h4>"); 
+            // toString() 
+            // düzenli ifade içeriğini string veri türünde düz bir metne dönüştürerek oluşturduğu değeri geriye döndürür
+
+            var exp10 = new RegExp("Felix", "gim");
+            var result17 = exp10.toString();
+            document.write(result17); // /Felix/gim
+
+
+            document.write("<h4>compile()</h4>"); 
+            // compile() 
+            // önceden oluşturulmuş düzenli ifade içerisindeki desenin değiştirilmesini sağlar
+
+            var text6 = "Hi Felix! Hello Rai!!!";
+            var exp11  = new RegExp("Felix", "i");
+            exp11.test(text6);
+            var result18 = RegExp.rightContext;
+            document.write( result18 + "<br />"); // ! Hello Rai!!!
+
+            exp11.compile(/rai/gim);
+            exp11.test(text6);
+            var result19 = RegExp.rightContext;
+            document.write( result19 + "<br />"); // !!!
+        </script>
+    </body>
+</html>
