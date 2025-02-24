@@ -7,23 +7,44 @@
         </style>
     </head>
     <body>
-        <div id="cookie-area-escaped"></div> 
-        <br>
-        <div id="cookie-area-unescaped"></div> 
+        <div id="area"></div>
         <script>
-            // cookie
-            // name = value; lifetime; path;
-            // path tanımlama
-            var cookieName = "gökçe";
-            var cookieValue = "myCookieValue";
-            var time = new Date();
-            time.setMonth(time.getMonth() + 1); 
+            // addEventListener()
+            // Belgeye event/olay dinleyecisi eklemek için kullanılır
+            // İşaretlenen veya dinlenen olay/event belgede gerçekleştirilecek olursa belirtilen fonksiyon ya da fonksiyonlar çalışır
 
-            document.cookie = escape(cookieName) + "=" + cookieValue + ";expires=" + time.toTimeString() + ";path=/"; // tüm ana path altında
-            // document.cookie = escape(cookieName) + "=" + cookieValue + ";expires=" + time.toTimeString() + ";path=/aboutme"; // sadece about me kısmında
+            document.addEventListener("click", function() {
+            document.body.style.backgroundColor = "red";
 
-            var cookies = document.cookie;
-            document.getElementById("cookie-area-unescaped").innerHTML = unescape(cookies);
+            let textDiv = document.createElement("div");
+            textDiv.textContent = "Bu bir ortalanmış metindir.";
+            textDiv.style.position = "absolute";
+            textDiv.style.top = "50%";
+            textDiv.style.left = "50%";
+            textDiv.style.transform = "translate(-50%, -50%)";
+            // textDiv.style.backgroundColor = "white";
+            textDiv.style.color = "white";
+            // textDiv.style.padding = "10px";
+            // textDiv.style.borderRadius = "5px";
+            // textDiv.style.fontSize = "20px";
+            textDiv.style.textAlign = "center";
+            document.body.appendChild(textDiv);
+        });
+
+        document.addEventListener("mouseover", function() {
+            document.body.style.backgroundColor = "blue";
+        });
+
+        document.addEventListener("mouseout", function() {
+            document.body.style.backgroundColor = "green";
+        });
+
+        // document.addEventListener("click", functionName); olarak da kullanılabilir
+        // event types
+        // click
+        // mouseover
+        // mouseout
+        // mousemove
         </script>
     </body>
 </html>     
